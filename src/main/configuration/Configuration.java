@@ -19,4 +19,6 @@ public enum Configuration {
     public MutationType mutationType = MutationType.DM;
     double crossoverRatio = 0.7;
     double mutationRatio = 0.001;
+
+    public int tournamentSelectionSize = 8;
 }
