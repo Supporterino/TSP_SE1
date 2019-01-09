@@ -4,6 +4,7 @@ import crossover.Crossover;
 import data.HSQLDBManager;
 import data.InstanceReader;
 import data.TSPLIBReader;
+import gui.Gui;
 import mutation.Mutation;
 import selection.Selection;
 
