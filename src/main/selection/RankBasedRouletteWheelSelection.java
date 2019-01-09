@@ -15,7 +15,7 @@ public class RankBasedRouletteWheelSelection extends Selection {
         Collections.sort(populationTourList);
 
         // Generates the number of tours for the roulette wheel (maximum 10%)
-        int maximumNumberOfIndividualsSelected = (int) Configuration.instance.randomGenerator.nextDouble(0, 0.1) * populationTourList.size();
+        int maximumNumberOfIndividualsSelected = (int) Configuration.instance.randomGenerator.nextDouble(0, Configuration.instance.selectionRankBasedRWMaximumNumberOfIndividuals) * populationTourList.size();
         if (maximumNumberOfIndividualsSelected % 2 != 0)
             maximumNumberOfIndividualsSelected += 1;
         // Sum from all possible ranks (Formula: "sum of first n natural numbers" (Gauss))

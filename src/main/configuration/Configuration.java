@@ -22,4 +22,5 @@ public enum Configuration {
 
     public double selectionPressureProbability = 0.7;
     public double selectionPressureRatio = 0.1;
+    public double selectionRankBasedRWMaximumNumberOfIndividuals = 0.1;
 }
