@@ -105,3 +105,9 @@ Blog
 About
 Press h to open a hovercard with more details.
 *.class
+.idea/encodings.xml
+.idea/misc.xml
+.idea/vcs.xml
+data/datastore.db.properties
+src/TSP_SE1.iml
+data/datastore.db.script
