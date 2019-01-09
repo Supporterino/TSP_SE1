@@ -4,4 +4,12 @@ import java.util.ArrayList;
 
 public class Population {
     private ArrayList<Tour> tourList;
+
+    public ArrayList<Tour> getTourList() {
+        return tourList;
+    }
+
+    public void setTourList(ArrayList<Tour> tourList) {
+        this.tourList = tourList;
+    }
 }
