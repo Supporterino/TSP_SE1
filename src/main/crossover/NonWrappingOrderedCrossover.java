@@ -44,39 +44,64 @@ public class NonWrappingOrderedCrossover extends Crossover {
         /*
         Phase 2: Pushing aside elements between a and b
          */
-        int middle = ((b - a) / 2); //Separting left and right inside a and b
+
+        //child1 push left
+        int middle = ((b - a) / 2) +a; //Separting left and right inside a and b
         for (int i = 0; i < middle; i++) {
             if (child01.get(i) != null) {
                 continue;
             } else {
-                child01.set(i, child01.get(i + 1));
-                child01.set(i + 1, null);
+                for(int j = i +1; j<middle;j++) {
+                    if (child01.get(j) != null) {//if 2 null are next to eachother,
+                        child01.set(i, child01.get(j)); // we have to get further to get the next valide entry
+                        child01.set(j, null);
+                        break;
+                    }
+                }
             }
         }
 
-        for (int i = child01.size() - 1; i >= middle; i--) {
+        //child1 push right
+        for (int i = child01.size() - 1; i > middle; i--) {
             if (child01.get(i) != null) {
                 continue;
             } else {
-                child01.set(i, child01.get(i - 1));
-                child01.set(i - 1, null);
+                for(int j = i -1; j>middle;j--) {
+                    if (child01.get(j) != null) {
+                        child01.set(i, child01.get(j));
+                        child01.set(j , null);
+                        break;
+                    }
+                }
             }
         }
 
+        //child2 push left
         for (int i = 0; i < middle; i++) {
             if (child02.get(i) != null)
                 continue;
             else {
-                child02.set(i, child02.get(i + 1));
-                child02.set(i + 1, null);
+                for(int j = i +1; j<middle;j++) {
+                    if (child02.get(j) != null) {
+                        child02.set(i, child02.get(j));
+                        child02.set(j, null);
+                        break;
+                    }
+                }
             }
         }
-        for (int i = child02.size() - 1; i >= middle; i--) {
+        //child2 push right
+        for (int i = child02.size() - 1; i > middle; i--) {
             if (child02.get(i) != null)
                 continue;
             else {
-                child02.set(i, child02.get(i - 1));
-                child02.set(i - 1, null);
+                for(int j = i -1; j>middle;j--) {
+                    if (child02.get(j) != null) {
+                        child02.set(i, child02.get(j));
+                        child02.set(j , null);
+                        break;
+                    }
+                }
             }
         }
 
