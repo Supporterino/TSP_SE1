@@ -2,6 +2,7 @@ package crossover;
 
 import base.City;
 import base.Tour;
+import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +18,81 @@ public class PartiallyMappedCrossover extends Crossover {
         ArrayList<base.City> ordered2 = new ArrayList<>();
 
 
-        
+        //new instance of MersenneTwister
+        random.MersenneTwisterFast random = new MersenneTwisterFast();
 
+        //swath Länge festlegen
 
+        int beginOfSwath = random.nextInt(0, 279);//cut nach eins bis vorletzte stelle
+        int endOfSwath = random.nextInt(beginOfSwath, 279);//cut nach eins bis vorletzte stelle
+
+        //crossover
+
+        //child1 begin
+        //copy defined swath variables to output child
+        for(int countSwath = beginOfSwath; beginOfSwath <= endOfSwath; countSwath++) {
+            child1[countSwath] = parent1[countSwath];
+        }
+
+        for(int countSwath = beginOfSwath; beginOfSwath <= endOfSwath; countSwath++){
+            //checks if city equals city in same position as in parent 2 -> break
+            if(parent1[countSwath] == parent2[countSwath]) {
+                return null; }
+            else{
+
+                // looks for the same number in the swatch -> breaks
+                for(int x = 0; x < endOfSwath - countSwath; x++ )
+
+                    if(parent1[countSwath] == parent2[beginOfSwath+x]){
+                        return null;
+                    }
+                    //takes the number to the position of parent2
+                    else{
+                        for(int y = 0; y <= 277; y++){
+                            if(parent2[y] == parent1[countSwath]){
+                                child1[y]= parent2[y];
+                            }
+                        }
+                    }
+            }
+        }
+        for(int n = 0; n <=277; n++ ){
+             if(child1[n] == null){
+                 child1[n] = parent2[n];
+             }
+        }
+        //child1 finished
+
+        //child2 begin
+
+        for(int countSwath = beginOfSwath; beginOfSwath <= endOfSwath; countSwath++){
+            //checks if city equals city in same position as in parent 2 -> break
+            if(parent2[countSwath] == parent1[countSwath]) {
+                return null; }
+            else{
+
+                // looks for the same number in the swatch -> breaks
+                for(int x = 0; x < endOfSwath - countSwath; x++ )
+
+                    if(parent2[countSwath] == parent1[beginOfSwath+x]){
+                        return null;
+                    }
+                    //takes the number to the position of parent2
+                    else{
+                        for(int y = 0; y <= 277; y++){
+                            if(parent1[y] == parent2[countSwath]){
+                                child2[y]= parent1[y];
+                            }
+                        }
+                    }
+            }
+        }
+        for(int n = 0; n <=277; n++ ){
+            if(child2[n] == null){
+                child2[n] = parent1[n];
+            }
+        }
+        //child2 finished
 
 
         //creation of Output
