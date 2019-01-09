@@ -20,5 +20,6 @@ public enum Configuration {
     double crossoverRatio = 0.7;
     double mutationRatio = 0.001;
 
-    public int tournamentSelectionSize = 8;
+    public double selectionPressureProbability = 0.7;
+    public double selectionPressureRatio = 0.1;
 }
