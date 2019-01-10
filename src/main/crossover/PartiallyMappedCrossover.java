@@ -10,8 +10,6 @@ import java.util.Arrays;
 // PMX
 public class PartiallyMappedCrossover extends Crossover {
 
-
-
     @SuppressWarnings("Duplicates")
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
         base.City parent1[] = (base.City[]) tour01.getCities().toArray();
@@ -22,12 +20,11 @@ public class PartiallyMappedCrossover extends Crossover {
         //new instance of MersenneTwister
         random.MersenneTwisterFast random = new MersenneTwisterFast();
 
-        //swath Länge festlegen
+        //define begin of swath         -- swath mind. 2 Stellen groß
+        int beginOfSwath = random.nextInt(0, 277; //kleineZahl
+        int endOfSwath = random.nextInt(beginOfSwath + 1, 279); //größere Zahl
 
-        int beginOfSwath = random.nextInt(0, 279);//cut nach eins bis vorletzte stelle
-        int endOfSwath = random.nextInt(beginOfSwath, 279);//cut nach eins bis vorletzte stelle
-
-        //crossover
+        //crossover algorithm
 
         //child1 begin
         //copy defined swath variables to output child
@@ -50,7 +47,7 @@ public class PartiallyMappedCrossover extends Crossover {
                         }
                         //takes the number to the position of parent2
                         else {
-                            for (int y = 0; y <= 277; y++) {
+                            for (int y = 0; y <= 279; y++) {
                                 if (parent2[y] == parent1[countSwath]) {
                                     child1[y] = parent2[y];
                                 }
@@ -58,7 +55,7 @@ public class PartiallyMappedCrossover extends Crossover {
                         }
                 }
             }
-            for (int n = 0; n <= 277; n++) {
+            for (int n = 0; n <= 279; n++) {
                 if (child1[n] == null) {
                     child1[n] = parent2[n];
                 }
@@ -88,7 +85,7 @@ public class PartiallyMappedCrossover extends Crossover {
 
                     //if city is not in swatch parent1 is getting scanned and var goes at that position in output
                     else{
-                        for(int y = 0; y <= 277; y++){
+                        for(int y = 0; y <= 279; y++){
                             if(parent1[y] == parent2[countSwath]){
                                 child2[y]= parent1[y];
                                 break;
@@ -98,8 +95,8 @@ public class PartiallyMappedCrossover extends Crossover {
             }
         }
 
-        //restliche Citys von parent1 in child 2 einfügen
-        for(int n = 0; n <=277; n++ ){
+        //put citys from parent1 to empty child2
+        for(int n = 0; n <=279; n++ ){
             if(child2[n] == null){
                 child2[n] = parent1[n];
             }
