@@ -3,35 +3,23 @@ package mutation;
 import base.City;
 import base.Tour;
 import configuration.Configuration;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
 
 // DM
 public class DisplacementMutation extends Mutation {
 
     public void doMutation(Tour tour) {
         List<City> subTour = new ArrayList<>();
-        int oldIndex = generateRandomNumber(tour.getSize() - 1);
-        int length = generateRandomNumber(tour.getSize() - 1 - oldIndex);
-        int newIndex = generateRandomNumber(tour.getSize() - 1);
-        //create SubTour
-        for (int index = oldIndex + length; index > oldIndex; index--) {
+        int oldIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
+        int length = Configuration.instance.randomGenerator.nextInt(tour.getSize() - oldIndex);
+        for (int index = oldIndex + length - 1; index > oldIndex - 1; index--) {
             subTour.add(tour.getCity(index));
             tour.getCities().remove(index);
         }
-        //insert SubTour at newIndex
-        for (int iterations = 0; iterations < length; iterations++) {
-            tour.addCity(newIndex + iterations, subTour.get(iterations));
-        }
-    }
-
-    private int generateRandomNumber(int bound) {
-        int randomValue;
-        do {
-            randomValue = Configuration.instance.randomGenerator.nextInt();
-        } while (randomValue <= bound);
-        return randomValue;
+        Collections.reverse(subTour);
+        int newIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
+        tour.getCities().addAll(newIndex, subTour);
     }
 }
