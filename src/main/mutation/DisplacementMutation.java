@@ -11,15 +11,17 @@ import java.util.List;
 public class DisplacementMutation extends Mutation {
 
     public void doMutation(Tour tour) {
-        List<City> subTour = new ArrayList<>();
-        int oldIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
-        int length = Configuration.instance.randomGenerator.nextInt(tour.getSize() - oldIndex);
-        for (int index = oldIndex + length - 1; index > oldIndex - 1; index--) {
-            subTour.add(tour.getCity(index));
-            tour.getCities().remove(index);
+        if (tour != null && tour.getCities() != null && tour.getSize() > 0) {
+            List<City> subTour = new ArrayList<>();
+            int oldIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
+            int length = Configuration.instance.randomGenerator.nextInt(tour.getSize() - oldIndex);
+            for (int index = oldIndex + length - 1; index > oldIndex - 1; index--) {
+                subTour.add(tour.getCity(index));
+                tour.getCities().remove(index);
+            }
+            Collections.reverse(subTour);
+            int newIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
+            tour.getCities().addAll(newIndex, subTour);
         }
-        Collections.reverse(subTour);
-        int newIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
-        tour.getCities().addAll(newIndex, subTour);
     }
 }
