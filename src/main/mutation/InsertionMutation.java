@@ -6,7 +6,7 @@ import configuration.Configuration;
 
 public class InsertionMutation extends Mutation {
     public void doMutation(Tour tour) {
-        if (tour != null && tour.getCities() != null && tour.getSize() > 0) {
+        if (tour != null && tour.getCities() != null && tour.getSize() > 1) {
             int indexForPicking = Configuration.instance.randomGenerator.nextInt(tour.getSize());
             City tempCity = tour.getCity(indexForPicking);
             tour.getCities().remove(indexForPicking);
