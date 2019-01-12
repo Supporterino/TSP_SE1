@@ -21,7 +21,7 @@ public class DisplacementMutation extends Mutation {
             }
             Collections.reverse(subTour);
             int newIndex = Configuration.instance.randomGenerator.nextInt(tour.getSize());
-            tour.getCities().addAll(newIndex, subTour);
+            tour.getCities().addAll(newIndex + 1, subTour);
         }
     }
 }
