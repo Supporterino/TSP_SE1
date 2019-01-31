@@ -19,4 +19,8 @@ public enum Configuration {
     public MutationType mutationType = MutationType.DM;
     double crossoverRatio = 0.7;
     double mutationRatio = 0.001;
+
+    public double selectionPressureProbability = 0.7;
+    public double selectionPressureRatio = 0.1;
+    public double selectionRankBasedRWMaximumNumberOfIndividuals = 0.1;
 }
