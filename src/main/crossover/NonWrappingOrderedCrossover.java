@@ -6,6 +6,7 @@ import random.MersenneTwisterFast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 /*
     NON-WRAPPING ORDERED CROSSOVER
     URL: http://www.cs.bham.ac.uk/~wbl/biblio/gecco2006/docs/p1125.pdf Stand: 8.01.2019
@@ -14,21 +15,21 @@ import java.util.ArrayList;
 public class NonWrappingOrderedCrossover extends Crossover {
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
 
-          int a = 4;
-          int b = 7;
+        int a = 4;
+        int b = 7;
 
-          ArrayList<City> child01 = new ArrayList<>(tour01.getCities());
-          ArrayList<City> child02 = new ArrayList<>(tour02.getCities());
+        ArrayList<City> child01 = new ArrayList<>(tour01.getCities());
+        ArrayList<City> child02 = new ArrayList<>(tour02.getCities());
 
-          for(int i = a;i<=b;i++) {
-              if(child02.contains(tour01.getCity(i))){
-                  for(int j = 0; j<=child02.size()-1;j++) {
-                      if(child02.get(j) == tour01.getCity(i)) {
-                          child02.set(j, null);
-                      }
-                  }
-              }
-          }
+        for (int i = a; i <= b; i++) {
+            if (child02.contains(tour01.getCity(i))) {
+                for (int j = 0; j <= child02.size() - 1; j++) {
+                    if (child02.get(j) == tour01.getCity(i)) {
+                        child02.set(j, null);
+                    }
+                }
+            }
+        }
 
 
         for (int i = a; i <= b; i++) {
@@ -46,12 +47,12 @@ public class NonWrappingOrderedCrossover extends Crossover {
          */
 
         //child1 push left
-        int middle = ((b - a) / 2) +a; //Separting left and right inside a and b
+        int middle = ((b - a) / 2) + a; //Separting left and right inside a and b
         for (int i = 0; i < middle; i++) {
             if (child01.get(i) != null) {
                 continue;
             } else {
-                for(int j = i +1; j<middle;j++) {
+                for (int j = i + 1; j < middle; j++) {
                     if (child01.get(j) != null) {//if 2 null are next to eachother,
                         child01.set(i, child01.get(j)); // we have to get further to get the next valide entry
                         child01.set(j, null);
@@ -62,26 +63,14 @@ public class NonWrappingOrderedCrossover extends Crossover {
         }
 
         //child1 push right
-        for (int i = child01.size() - 1; i > middle; i--) {
-            if (child01.get(i) != null) {
-                continue;
-            } else {
-                for(int j = i -1; j>middle;j--) {
-                    if (child01.get(j) != null) {
-                        child01.set(i, child01.get(j));
-                        child01.set(j , null);
-                        break;
-                    }
-                }
-            }
-        }
+        childTwoPushRight(child01, middle);
 
         //child2 push left
         for (int i = 0; i < middle; i++) {
             if (child02.get(i) != null)
                 continue;
             else {
-                for(int j = i +1; j<middle;j++) {
+                for (int j = i + 1; j < middle; j++) {
                     if (child02.get(j) != null) {
                         child02.set(i, child02.get(j));
                         child02.set(j, null);
@@ -91,19 +80,7 @@ public class NonWrappingOrderedCrossover extends Crossover {
             }
         }
         //child2 push right
-        for (int i = child02.size() - 1; i > middle; i--) {
-            if (child02.get(i) != null)
-                continue;
-            else {
-                for(int j = i -1; j>middle;j--) {
-                    if (child02.get(j) != null) {
-                        child02.set(i, child02.get(j));
-                        child02.set(j , null);
-                        break;
-                    }
-                }
-            }
-        }
+        childTwoPushRight(child02, middle);
 
         /*
         Phase 3: Replacing nulls in child Arraylists
@@ -120,7 +97,7 @@ public class NonWrappingOrderedCrossover extends Crossover {
         /*
         Converting into Tour Object
          */
-        Tour child1 =  new Tour();
+        Tour child1 = new Tour();
         Tour child2 = new Tour();
         child1.setCities(child01);
         child2.setCities(child02);
@@ -132,5 +109,21 @@ public class NonWrappingOrderedCrossover extends Crossover {
         //child01 need to be returned by the function
 
         return tour;
+    }
+
+    private void childTwoPushRight(ArrayList<City> child02, int middle) {
+        for (int i = child02.size() - 1; i > middle; i--) {
+            if (child02.get(i) != null)
+                continue;
+            else {
+                for (int j = i - 1; j > middle; j--) {
+                    if (child02.get(j) != null) {
+                        child02.set(i, child02.get(j));
+                        child02.set(j, null);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
