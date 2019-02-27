@@ -30,27 +30,11 @@ public class MaskedCrossover extends Crossover {
         }
         // Masked Crossover:
         for(int i=0; i<tour01.getSize(); i++) {
-            City helpObj = null;
             if(mask01[i] && !mask02[i]) {   // tour01 dominant über tour02
-                helpObj = child02.getCity(i);
-                child02.addCity(i, tour01.getCity(i)); // -> child02 übernimmt City an Position i von tour01
-                // um doppelte und fehlende Städte zu vermeiden, wird nun danach gesucht
-                // falls solche Fälle gefunden werden, wird die neue Änderung behalten, und die alte Position mit der verdrängten City ersetzt
-                for(int k=0; k<tour01.getSize(); k++) {
-                    if(child02.getCity(k)==tour01.getCity(i) && k!=i) {
-                        child02.addCity(k, helpObj);
-                    }
-                }
+                cityCrossover(i, child02, tour01);
             }
             if(!mask01[i] && mask02[i]) {   // tour02 dominant über tour01
-                helpObj = child01.getCity(i);
-                child01.addCity(i, tour02.getCity(i)); // -> child01 übernimmt City an Position i von tour02
-                // siehe for-Schleife im IF-Block darüber
-                for(int k=0; k<tour02.getSize(); k++) {
-                    if(child01.getCity(k)==tour02.getCity(i) && k!=i) {
-                        child01.addCity(k, helpObj);
-                    }
-                }
+                cityCrossover(i, child01, tour02);
             }
         }
         ArrayList<Tour> output = new ArrayList<Tour>();
@@ -58,6 +42,19 @@ public class MaskedCrossover extends Crossover {
         output.add(child02);
         return output;
     }
+
+    private void cityCrossover(int pos, Tour child, Tour dominantParent) {
+        City helpObj = child.getCity(pos);
+        child.addCity(pos, dominantParent.getCity(pos));    // Child übernimmt City an geg. Position von Parent
+        // um doppelte und fehlende Städte zu vermeiden, wird nun danach gesucht
+        // falls solche Fälle gefunden werden, wird die neue Änderung behalten, und die alte Position mit der verdrängten City ersetzt
+        for(int k=0; k<dominantParent.getSize(); k++) {
+            if(child.getCity(k)==dominantParent.getCity(pos) && k!=pos) {
+                child.addCity(k, helpObj);
+            }
+        }
+    }
+
 }
 /* Fragen:
     - Muss beim Crossover darauf geachtet werden, dass alle Städte nur einmal vorkommen?
