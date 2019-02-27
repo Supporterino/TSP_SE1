@@ -11,6 +11,14 @@ import java.util.Random;
 // AEX
 public class AlternatingEdgesCrossover extends Crossover {
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
+        ArrayList<Tour> output = new ArrayList<>();
+        output.add(createAEXChild(tour01, tour02));
+        output.add(createAEXChild(tour02, tour01));
+
+        return output;
+    }
+
+    private Tour createAEXChild(Tour tour01, Tour tour02){
         Tour child = new Tour();
 
         //the child takes the arc from parent01
@@ -43,10 +51,7 @@ public class AlternatingEdgesCrossover extends Crossover {
             firstIsCurrentParent = !firstIsCurrentParent;
         }
 
-        ArrayList<Tour> output = new ArrayList<>();
-        output.add(child);
-
-        return output;
+        return child;
     }
 
     private City getNextCityOfParentTour(Tour tour, City currentCity){
