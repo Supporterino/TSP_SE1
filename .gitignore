@@ -1,3 +1,25 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @Supporterino Sign out
+ The password you provided is weak and can be easily guessed. To increase your security, please change your password as soon as possible.
+
+Read our documentation on safer password practices.
+
+2
+8 18 Herbert-Karl/Software-Engineering-I
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+Software-Engineering-I/.gitignore
+1d6eed7  on 7 Dec 2018
+@Blackswater Blackswater fixed validate()
+@Blackswater @Heliox9 @Herbert-Karl @Supporterino
+
+72 lines (54 sloc)  1.47 KB
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -45,7 +67,6 @@ cmake-build-*/
 
 # IntelliJ
 out/
-build/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -70,3 +91,16 @@ fabric.properties
 .idea/modules.xml
 .idea/Software-Engineering-I.iml
 .idea/workspace.xml___jb_old___
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Press h to open a hovercard with more details.
