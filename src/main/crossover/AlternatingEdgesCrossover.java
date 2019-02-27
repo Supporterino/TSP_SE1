@@ -2,9 +2,10 @@ package crossover;
 
 import base.City;
 import base.Tour;
+import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 // Mirco Käsmann
 // AEX
@@ -68,6 +69,7 @@ public class AlternatingEdgesCrossover extends Crossover {
     //returns a random city which is not in the child yet
     private City getUnvisitedCity (ArrayList<City> visitedCities, ArrayList<City> allCities){
         allCities.removeAll(visitedCities);
-        return allCities.get(ThreadLocalRandom.current().nextInt(0, allCities.size()));
+        Random rnd = new MersenneTwisterFast();
+        return allCities.get(((MersenneTwisterFast) rnd).nextInt(0, allCities.size()));
     }
 }
