@@ -22,7 +22,7 @@ public class RouletteWheelSelection extends Selection {
         }
 
         //put tours on a number bar
-        Map<Double, Tour> numberBar = new HashMap<>();
+        SortedMap<Double, Tour> numberBar = new TreeMap<>();
         double previousProbability = 0;
         for(Map.Entry<Double, Tour> entry : totalFitnessRelativity.entrySet()){
             double currentProbability = previousProbability + entry.getKey();
@@ -33,7 +33,7 @@ public class RouletteWheelSelection extends Selection {
         //choose a tour randomly according to how near it is to
         ArrayList<Tour> rouletteWheelOrder = new ArrayList<>();
         while(!numberBar.isEmpty()) {
-            double randomNumber = new random.MersenneTwisterFast().nextDouble();
+            double randomNumber = new random.MersenneTwisterFast().nextDouble(0, numberBar.lastKey());
             for(Map.Entry<Double, Tour> numberBarSection : numberBar.entrySet()){
                 if(randomNumber <= numberBarSection.getKey()){
                 rouletteWheelOrder.add(numberBarSection.getValue());
