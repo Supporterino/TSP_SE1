@@ -1,7 +1,8 @@
-package crossover;
+package main.crossover;
 
 import base.City;
 import base.Tour;
+import crossover.Crossover;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class PartiallyMappedCrossover extends Crossover {
         random.MersenneTwisterFast random = new MersenneTwisterFast();
 
         //define begin of swath         -- swath mind. 2 Stellen groß
-        int beginOfSwath = random.nextInt(0, 277; //kleineZahl
+        int beginOfSwath = random.nextInt(0, 277); //kleineZahl
         int endOfSwath = random.nextInt(beginOfSwath + 1, 279); //größere Zahl
 
         //crossover algorithm
