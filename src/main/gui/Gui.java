@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.*;
 
 import java.io.*;
 
