@@ -10,7 +10,7 @@ import selection.Selection;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Application {
+public class Program {
     private ArrayList<City> availableCities;
     private double[][] distances;
 
@@ -18,13 +18,16 @@ public class Application {
     private Selection selection;
     private Mutation mutation;
 
-    public static void main(String... args) {
-        Application application = new Application();
+/*    public static void main(String... args) {
+        Program program = new Program();
         application.startupHSQLDB();
         application.loadData();
         application.initConfiguration();
         application.execute();
         application.shutdownHSQLDB();
+    }*/
+
+    public Program() {
     }
 
     public void startupHSQLDB() {
@@ -56,6 +59,7 @@ public class Application {
         System.out.println("availableCities (size) : " + availableCities.size());
 
         distances = tspLibReader.getDistances();
+
         printMatrix(distances);
 
         instanceReader.close();

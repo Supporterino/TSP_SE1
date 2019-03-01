@@ -1,4 +1,4 @@
-package test.crossover;
+package crossover;
 
 public class TestPositionCrossover {
 }
