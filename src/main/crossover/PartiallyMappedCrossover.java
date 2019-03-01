@@ -1,4 +1,4 @@
-package main.crossover;
+package crossover;
 
 import base.City;
 import base.Tour;
@@ -13,10 +13,10 @@ public class PartiallyMappedCrossover extends Crossover {
 
     @SuppressWarnings("Duplicates")
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
-        base.City parent1[] = (base.City[]) tour01.getCities().toArray();
-        base.City parent2[] = (base.City[]) tour02.getCities().toArray();
-        base.City child1[] = new City[280];
-        base.City child2[] = new City[280];
+        base.City[] parent1 = (base.City[]) tour01.getCities().toArray();
+        base.City[] parent2 = (base.City[]) tour02.getCities().toArray();
+        base.City[] child1 = new City[280];
+        base.City[] child2 = new City[280];
 
         //new instance of MersenneTwister
         random.MersenneTwisterFast random = new MersenneTwisterFast();

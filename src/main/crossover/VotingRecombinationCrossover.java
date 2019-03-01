@@ -1,4 +1,4 @@
-package main.crossover;
+package crossover;
 
 import base.City;
 import base.Tour;
@@ -12,8 +12,8 @@ public class VotingRecombinationCrossover extends crossover.Crossover {
     random.MersenneTwisterFast random = new random.MersenneTwisterFast();
 
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
-        base.City parents[][] = {(base.City[]) tour01.getCities().toArray(), (base.City[]) tour02.getCities().toArray()};
-        base.City childs[][] = new base.City[2][280];
+        base.City[][] parents = {(base.City[]) tour01.getCities().toArray(), (base.City[]) tour02.getCities().toArray()};
+        base.City[][] childs = new base.City[2][280];
         ArrayList[] flags = new ArrayList[]{tour01.getCities(), tour02.getCities()};
 
         //prueft ob die parents gemeinsamkeiten haben, falls ja wird diese an die passende stelle im child geschrieben
@@ -74,7 +74,7 @@ public class VotingRecombinationCrossover extends crossover.Crossover {
         return childList;
     }
 
-    public boolean checkContains(int id, base.City toCheck[]){
+    public boolean checkContains(int id, base.City[] toCheck){
         for(int x = 0; x < 280; x++){
             if(toCheck[x] != null && toCheck[x].getId()==id) return true;
         }
