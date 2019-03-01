@@ -1,8 +1,8 @@
-package test.mutation;
+package mutation;
 
 import base.City;
-import main.base.Tour;
-import main.mutation.DisplacementMutation;
+import base.Tour;
+import mutation.DisplacementMutation;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;

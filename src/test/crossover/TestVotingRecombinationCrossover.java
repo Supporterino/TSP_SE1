@@ -1,8 +1,8 @@
-package test.crossover;
+package crossover;
 
-import main.base.Tour;
-import main.crossover.MaskedCrossover;
-import main.crossover.VotingRecombinationCrossover;
+import base.Tour;
+import crossover.MaskedCrossover;
+import crossover.VotingRecombinationCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package test.crossover;
+package crossover;
 
-import main.base.Tour;
-import main.crossover.OrderCrossover;
+import base.Tour;
+import crossover.OrderCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;

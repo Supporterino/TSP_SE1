@@ -1,7 +1,7 @@
-package test.crossover;
+package crossover;
 
-import main.base.Tour;
-import main.crossover.PartiallyMatchedCrossover;
+import base.Tour;
+import crossover.PartiallyMappedCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class TestPartiallyMatchedCrossover {
     @Test
     public void doCrossover() {
 
-        PartiallyMatchedCrossover maskedCrossover = new PartiallyMatchedCrossover();
+        PartiallyMappedCrossover maskedCrossover = new PartiallyMappedCrossover();
 
         Tour tour2 = new Tour();
         Tour tour1 = new Tour();

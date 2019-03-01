@@ -1,7 +1,7 @@
-package test.crossover;
+package crossover;
 
-import main.base.Tour;
-import main.crossover.EdgeRecombinationCrossover;
+import base.Tour;
+import crossover.EdgeRecombinationCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;

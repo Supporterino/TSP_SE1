@@ -1,9 +1,9 @@
-package test.selection;
+package selection;
 
 import org.junit.Test;
-import main.base.Population;
-import main.base.Tour;
-import main.selection.RankBasedRouletteWheelSelection;
+import base.Population;
+import base.Tour;
+import selection.RankBasedRouletteWheelSelection;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

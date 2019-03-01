@@ -1,7 +1,7 @@
 package crossover;
 
-import main.base.Tour;
-import main.crossover.PositionCrossover;
+import base.Tour;
+import crossover.PositionCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;

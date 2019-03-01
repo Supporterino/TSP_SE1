@@ -1,7 +1,7 @@
-package test.mutation;
+package mutation;
 
-import main.base.Tour;
-import main.mutation.InversionMutation;
+import base.Tour;
+import mutation.InversionMutation;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class TestInversionMutation {
     public void testMutation() {
         ArrayList<base.City> cities = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
-            cities.add(new base.City(i,2,2));
+            cities.add(new base.City(i, 2, 2));
         }
         Tour testTour = new Tour();
         testTour.setCities(cities);
@@ -25,5 +25,6 @@ public class TestInversionMutation {
 
         LinkedHashSet hashSet = new LinkedHashSet();
         hashSet.addAll(cities);
-        assertTrue(hashSet.size()==cities.size());
+        assertTrue(hashSet.size() == cities.size());
+    }
 }

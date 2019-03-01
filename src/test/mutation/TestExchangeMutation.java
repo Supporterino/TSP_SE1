@@ -1,7 +1,7 @@
-package test.mutation;
+package mutation;
 
-import main.base.Tour;
-import main.mutation.ExchangeMutation;
+import base.Tour;
+import mutation.ExchangeMutation;
 import org.junit.Assert;
 import org.junit.Test;
 

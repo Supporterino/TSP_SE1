@@ -1,7 +1,7 @@
-package test.crossover;
+package crossover;
 
-import main.base.Tour;
-import main.crossover.ModifiedPartiallyMappedCrossover;
+import base.Tour;
+import crossover.ModifiedPartiallyMappedCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;

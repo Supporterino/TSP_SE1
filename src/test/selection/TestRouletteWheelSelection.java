@@ -1,8 +1,8 @@
 package selection;
 
-import main.base.Population;
-import main.base.Tour;
-import main.selection.RouletteWheelSelection;
+import base.Population;
+import base.Tour;
+import selection.RouletteWheelSelection;
 import org.junit.Test;
 
 import java.util.ArrayList;
