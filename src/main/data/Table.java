@@ -1,4 +1,4 @@
-package main.data.HSQLManagerForEvolution;
+package data;
 
 public enum Table {
     Scenario,

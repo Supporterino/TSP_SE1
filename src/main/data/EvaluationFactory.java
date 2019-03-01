@@ -1,4 +1,4 @@
-package main.data.HSQLManagerForEvolution;
+package data;
 
 import java.util.List;
 import java.util.stream.Collectors;

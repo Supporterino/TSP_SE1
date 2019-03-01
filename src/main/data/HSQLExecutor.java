@@ -1,4 +1,4 @@
-package main.data.HSQLManagerForEvolution;
+package data;
 
 import java.sql.*;
 import java.util.LinkedList;

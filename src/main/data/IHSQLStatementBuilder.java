@@ -1,4 +1,4 @@
-package main.data.HSQLManagerForEvolution;
+package data;
 
 interface IHSQLStatementBuilder {
     String buildSQLStatementGetById(long id, Table table);
