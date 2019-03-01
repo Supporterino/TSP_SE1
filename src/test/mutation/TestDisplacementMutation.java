@@ -1,10 +1,14 @@
-package mutation;
+package test.mutation;
 
 import base.City;
-import base.Tour;
+import main.base.Tour;
+import main.mutation.DisplacementMutation;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+
+import static org.junit.Assert.assertTrue;
 
 public class TestDisplacementMutation {
 
@@ -19,8 +23,9 @@ public class TestDisplacementMutation {
         DisplacementMutation mut = new DisplacementMutation();
         mut.doMutation(testTour);
         Assert.assertNotNull(testTour);
-        for (int i = 0; i < 10; i++) {
-            Assert.assertNotEquals(testTour.getCity(i), testTour.getCity(i + 1));
-        }
+
+        LinkedHashSet hashSet = new LinkedHashSet();
+        hashSet.addAll(cities);
+        assertTrue(hashSet.size()==cities.size());
     }
 }
