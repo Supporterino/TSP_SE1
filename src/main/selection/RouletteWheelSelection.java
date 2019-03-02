@@ -32,16 +32,15 @@ public class RouletteWheelSelection extends Selection {
 
         //choose a tour randomly according to how near it is to
         ArrayList<Tour> rouletteWheelOrder = new ArrayList<>();
-        while(!numberBar.isEmpty()) {
+        do{
             double randomNumber = new random.MersenneTwisterFast().nextDouble(0, numberBar.lastKey());
             for(Map.Entry<Double, Tour> numberBarSection : numberBar.entrySet()){
-                if(randomNumber <= numberBarSection.getKey()){
+                if(randomNumber <= numberBarSection.getKey() && !rouletteWheelOrder.contains(numberBarSection.getValue())){
                 rouletteWheelOrder.add(numberBarSection.getValue());
-                numberBar.remove(numberBarSection.getKey());
                 break;
                 }
             }
-        }
+        } while(rouletteWheelOrder.size() != population.getTourList().size());
         return rouletteWheelOrder;
     }
 }
