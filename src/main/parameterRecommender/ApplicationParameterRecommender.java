@@ -92,7 +92,7 @@ public class ApplicationParameterRecommender {
         }
 
         public void printMaxFitness(){
-            System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.fitness);
+            System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.getFitness());
             System.out.println("Parameters: {Crossover " + Configuration.instance.bestFitnessService.Crossover
                     + ", CrossoverRatio "+ Configuration.instance.bestFitnessService.CrossoverRatio
                     + ", Mutation "+ Configuration.instance.bestFitnessService.Mutation
