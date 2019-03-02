@@ -33,8 +33,7 @@ public class ApplicationParameterRecommender {
         ArrayList<String> mr = new ArrayList<>();
         mr.addAll(Arrays.asList("0.001", "0.002", "0.003", "0.004", "0.005"));
         ArrayList<String> s = new ArrayList<>();
-        //TSP: s.addAll(Arrays.asList("PRWS", "RBRWS", "RWS", "TS"));
-        s.addAll(Arrays.asList("BS", "RS", "RWS", "TS"));
+        s.addAll(Arrays.asList("PRWS", "RBRWS", "RWS", "TS"));
 
         for(String Crossover : cm) {
             for(String CrossoverRatio : cr) {
@@ -65,7 +64,7 @@ public class ApplicationParameterRecommender {
         }
 
         //TODO Population einfügen
-        
+
 
         public Service(String Crossover, String CrossoverRatio, String Mutation, String MutationRatio, String Selection) {
             this.Crossover = Crossover;
