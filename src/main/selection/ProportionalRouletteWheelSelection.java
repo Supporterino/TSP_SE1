@@ -22,15 +22,17 @@ public class ProportionalRouletteWheelSelection extends Selection {
             fitnessPercentage.put(key, tour);
         }
 
-        //choose a tour randomly according to how near it is to
+        //choose a tour randomly according to how near it is to the randomly selected number
         ArrayList<Tour> rouletteWheelOrder = new ArrayList<>();
-        while(!fitnessPercentage.isEmpty()) {
+        do {
             double randomNumber = new random.MersenneTwisterFast().nextDouble(0, fitnessPercentage.lastKey());
             double closestValue = fitnessPercentage.keySet().stream().min(Comparator.comparingDouble(i -> i - randomNumber))
                     .orElseThrow(() -> new NoSuchElementException("No value present"));
-            rouletteWheelOrder.add(fitnessPercentage.get(closestValue));
-            fitnessPercentage.remove(closestValue);
-        }
+            //only add the chosen tour if it is not already in the list
+            if(!rouletteWheelOrder.contains(fitnessPercentage.get(closestValue)))
+                rouletteWheelOrder.add(fitnessPercentage.get(closestValue));
+        } while(rouletteWheelOrder.size() != population.getTourList().size());
+
         return rouletteWheelOrder;
     }
 }
