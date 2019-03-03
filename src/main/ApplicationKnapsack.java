@@ -8,6 +8,7 @@ import selection.RankBasedRouletteWheelSelection;
 import selection.TournamentSelection;
 import crossover.HeuristicCrossover;
 import crossover.*;
+import utilities.LogEngine;
 
 import java.util.Scanner;
 

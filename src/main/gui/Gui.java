@@ -116,6 +116,8 @@ public class Gui extends Application {
         configuration.crossoverRatio = crossOverRatio.getValue();
         configuration.mutationRatio = mutationRatio.getValue();
         maxIterations = iterations.getValue();
+
+        //RUN main routine by CommandLine Team
     }
 
     private void fillGUIwithJSON() {

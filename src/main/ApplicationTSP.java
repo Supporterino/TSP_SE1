@@ -1,6 +1,6 @@
 import base.Population;
 import configuration.Configuration;
-
+import utilities.LogEngine;
 import java.util.Scanner;
 
 public class ApplicationTSP {

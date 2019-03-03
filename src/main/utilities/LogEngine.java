@@ -1,3 +1,5 @@
+package utilities;
+
 import configuration.Configuration;
 
 import java.io.BufferedWriter;
