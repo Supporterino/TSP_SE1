@@ -1,6 +1,5 @@
 package main.parameterRecommender;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -18,18 +17,18 @@ public class ApplicationParameterRecommender {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        printMaxFitness();
     }
 
-    //wird 3200 mal aufgerufen
     public static ExecutorService execute() {
         ExecutorService executor = Executors.newFixedThreadPool(Configuration.instance.numberOfProcessors);
 
         ArrayList<String> cm = new ArrayList<>();
-        cm.addAll(Arrays.asList("1PX", "2PX", "AX", "HX", "IX", "KPX", "SX", "UNX"));
+        cm.addAll(Arrays.asList("AEX", "CSEX", "CX", "DPX", "ERX", "GSX", "HGX", "HX", "MOX", "MPMX", "MPX", "MX", "NWOX", "OBX", "OX", "PMX", "PX", "SCX", "SMX", "UPMX", "VRX"));
         ArrayList<String> cr = new ArrayList<>();
         cr.addAll(Arrays.asList("0.5", "0.6", "0.7", "0.8"));
         ArrayList<String> mm = new ArrayList<>();
-        mm.addAll(Arrays.asList("DM", "EM", "INSM", "INVM", "SM"));
+        mm.addAll(Arrays.asList("DM", "EM", "HM", "INSM", "INVM"));
         ArrayList<String> mr = new ArrayList<>();
         mr.addAll(Arrays.asList("0.001", "0.002", "0.003", "0.004", "0.005"));
         ArrayList<String> s = new ArrayList<>();
@@ -51,6 +50,15 @@ public class ApplicationParameterRecommender {
         return executor;
     }
 
+    public static void printMaxFitness(){
+        System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.fitness);
+        System.out.println("Parameters: {Crossover " + Configuration.instance.bestFitnessService.Crossover
+                + ", CrossoverRatio "+ Configuration.instance.bestFitnessService.CrossoverRatio
+                + ", Mutation "+ Configuration.instance.bestFitnessService.Mutation
+                + ", MutationRatio "+ Configuration.instance.bestFitnessService.MutationRatio
+                + ", Selection"+ Configuration.instance.bestFitnessService.Selection+"}");
+    }
+
     public static class Service implements Runnable {
         private String Crossover;
         private String CrossoverRatio;
@@ -58,6 +66,7 @@ public class ApplicationParameterRecommender {
         private String MutationRatio;
         private String Selection;
         private double fitness = 0;
+        private main.Application application = new Application();
 
         public double getFitness() {
             return fitness;
@@ -72,32 +81,16 @@ public class ApplicationParameterRecommender {
             this.Mutation = Mutation;
             this.MutationRatio = MutationRatio;
             this.Selection = Selection;
-            //TODO Erzeuge Anfangspopulation
-            //generateInitialPopulation();
         }
 
         public void run() {
-            //for(int i = 0; i< 10000; i++) {
-            for(int i = 0; i< Configuration.instance.maxIterations; i++) { // Läuft so oft wie -i angegeben
-                //TODO Configuration Name anpassen
-                if(Crossover == "1PX") {
-                    //TODO führe 1PX aus
-                } //TODO Jeden Parameter Abfrage zund entsprechende Mthode ausführen
-            }
-            //TODO Auswertung der Fitness
-            //fitness = population.getFitness();
+            application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection, Configuration.instance.maxIterations);
+            fitness = application.getFitness();
             if(fitness > Configuration.instance.bestFitnessService.fitness){
                 Configuration.instance.bestFitnessService = this;
             }
         }
 
-        public void printMaxFitness(){
-            System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.getFitness());
-            System.out.println("Parameters: {Crossover " + Configuration.instance.bestFitnessService.Crossover
-                    + ", CrossoverRatio "+ Configuration.instance.bestFitnessService.CrossoverRatio
-                    + ", Mutation "+ Configuration.instance.bestFitnessService.Mutation
-                    + ", MutationRatio "+ Configuration.instance.bestFitnessService.MutationRatio
-                    + ", Selection"+ Configuration.instance.bestFitnessService.Selection+"}");
-        }
+
     }
 }

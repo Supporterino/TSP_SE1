@@ -18,6 +18,9 @@ public enum Configuration {
 
         System.out.println("Set maximum number of iterations:");
         this.maxIterations = scanner.nextInt();
+        System.out.println("Set number of cores:");
+        int coresUser = scanner.nextInt();
+        if(coresUser <= this.numberOfProcessors) this.numberOfProcessors = coresUser;
 
         scanner.close();
     }
