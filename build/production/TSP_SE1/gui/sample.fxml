@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.TextArea?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="8.0" layoutY="14.0" text="GUI">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="124.0" layoutY="6.0" text="Crossover" />
+        <Label layoutX="278.0" layoutY="6.0" text="Mutation" />
+        <ComboBox fx:id="Crossover" layoutX="131.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" />
+        <Spinner fx:id="CrossoverRatio" layoutX="195.0" layoutY="28.0" prefHeight="27.0" prefWidth="63.0" />
+        <ComboBox fx:id="Mutation" layoutX="278.0" layoutY="28.0" prefHeight="27.0" prefWidth="73.0" />
+        <Spinner fx:id="MutationRatio" layoutX="361.0" layoutY="28.0" prefHeight="27.0" prefWidth="79.0" />
+        <Spinner fx:id="Iterations" layoutX="550.0" layoutY="28.0" prefHeight="27.0" prefWidth="79.0" />
+        <Label layoutX="453.0" layoutY="6.0" text="Selection" />
+        <ComboBox fx:id="Selection" layoutX="453.0" layoutY="28.0" prefHeight="27.0" prefWidth="57.0" />
+        <Label layoutX="550.0" layoutY="6.0" prefHeight="17.0" prefWidth="73.0" text="Iterations" />
+        <Button fx:id="Start" layoutX="648.0" layoutY="28.0" mnemonicParsing="false" text="Start" />
+        <Button fx:id="Stop" layoutX="707.0" layoutY="28.0" mnemonicParsing="false" text="Step" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d7" height="27.0" layoutX="8.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="781.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838282" height="27.0" layoutX="359.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+        <Label id="Infos" fx:id="Infos" layoutX="14.0" layoutY="74.0" text="Iteration: 0 | Best distance: 0 | #C: 0 | #M: 0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d7" height="27.0" layoutX="5.0" layoutY="457.0" stroke="BLACK" strokeType="INSIDE" width="781.0" />
+        <Label id="Runtime" fx:id="Runtime" layoutX="14.0" layoutY="462.0" text="Runtime: 00:00 minutes" />
+        <TextArea fx:id="result" layoutX="5.0" layoutY="100.0" prefHeight="350.0" prefWidth="780" text="Results here" />
+    </children>
+</AnchorPane>
