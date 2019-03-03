@@ -2,6 +2,7 @@ package crossover;
 
 import base.City;
 import base.Tour;
+import crossover.Crossover;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
@@ -12,16 +13,16 @@ public class PartiallyMappedCrossover extends Crossover {
 
     @SuppressWarnings("Duplicates")
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
-        base.City parent1[] = (base.City[]) tour01.getCities().toArray();
-        base.City parent2[] = (base.City[]) tour02.getCities().toArray();
-        base.City child1[] = new City[280];
-        base.City child2[] = new City[280];
+        base.City[] parent1 = (base.City[]) tour01.getCities().toArray();
+        base.City[] parent2 = (base.City[]) tour02.getCities().toArray();
+        base.City[] child1 = new City[280];
+        base.City[] child2 = new City[280];
 
         //new instance of MersenneTwister
         random.MersenneTwisterFast random = new MersenneTwisterFast();
 
         //define begin of swath         -- swath mind. 2 Stellen groß
-        int beginOfSwath = random.nextInt(0, 277; //kleineZahl
+        int beginOfSwath = random.nextInt(0, 277); //kleineZahl
         int endOfSwath = random.nextInt(beginOfSwath + 1, 279); //größere Zahl
 
         //crossover algorithm

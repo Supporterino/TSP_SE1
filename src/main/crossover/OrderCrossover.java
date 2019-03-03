@@ -1,4 +1,4 @@
-package main.crossover;
+package crossover;
 
 import base.City;
 import base.Tour;
@@ -13,10 +13,10 @@ public class OrderCrossover extends crossover.Crossover {
     random.MersenneTwisterFast random = new MersenneTwisterFast();
 
     public ArrayList<Tour> doCrossover(Tour tour01, Tour tour02) {
-        base.City parent1[] = (base.City[]) tour01.getCities().toArray();
-        base.City parent2[] = (base.City[]) tour02.getCities().toArray();
-        base.City child1[] = new City[280];
-        base.City child2[] = new City[280];
+        base.City[] parent1 = (base.City[]) tour01.getCities().toArray();
+        base.City[] parent2 = (base.City[]) tour02.getCities().toArray();
+        base.City[] child1 = new City[280];
+        base.City[] child2 = new City[280];
         ArrayList<base.City> ordered1 = new ArrayList<>();
         ArrayList<base.City> ordered2 = new ArrayList<>();
 

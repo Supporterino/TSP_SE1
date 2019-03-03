@@ -17,10 +17,18 @@ public enum Configuration {
 
     public CrossoverType crossoverType = CrossoverType.PMX;
     public MutationType mutationType = MutationType.DM;
-    double crossoverRatio = 0.7;
-    double mutationRatio = 0.001;
+    public Object commandLine;
+    public int selectionAlgorithmChoice;
+    public double tournamentSelectionKValue;
+    public int crossoverAlgorithmChoice;
+    public int numberOfSlicePoints;
+    public double crossoverRatio;
+    public double mutationRatio;
+  
 
     public double selectionPressureProbability = 0.7;
     public double selectionPressureRatio = 0.1;
     public double selectionRankBasedRWMaximumNumberOfIndividuals = 0.1;
+    public int numberOfMutationPoints;
+    public int mutationAlgorithmChoice;
 }
