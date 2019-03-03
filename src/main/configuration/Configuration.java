@@ -32,4 +32,8 @@ public enum Configuration {
     public double selectionRankBasedRWMaximumNumberOfIndividuals = 0.1;
     public int numberOfMutationPoints;
     public int mutationAlgorithmChoice;
+    public String lineSeparator;
+    public String logFile;
+    public Object populationSize;
+    public Object elitismRatio;
 }

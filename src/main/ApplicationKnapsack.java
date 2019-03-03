@@ -1,21 +1,30 @@
 import base.Population;
 import configuration.Configuration;
+import mutation.DisplacementMutation;
+import mutation.ExchangeMutation;
+import mutation.InversionMutation;
+import mutation.InsertionMutation;
+import selection.RankBasedRouletteWheelSelection;
+import selection.TournamentSelection;
+import crossover.HeuristicCrossover;
+import crossover.*;
 
 import java.util.Scanner;
 
-public class ApplicationTSP {
-    private static ApplicationTSP applicationTSP;
-    private Scanner inputReader;
+public class ApplicationKnapsack {
 
+    private static ApplicationKnapsack applicationKnapsack;
+    private Scanner inputReader;
     public static void main(String... args) {
         Program program = new Program(new CommandLine());
         // ApplicationTSP applicationTSP = new ApplicationTSP();
         //  applicationTSP.execute();
 
 
+
     }
 
-    public void setupConfiguration() {
+    public  void setupConfiguration(){
         setupConfigurationSelection();
         setupConfigurationCrossover();
         setupConfigurationMutation();
@@ -47,7 +56,8 @@ public class ApplicationTSP {
     }
 
 
-    private void setupConfigurationMutation() {
+
+    private void setupConfigurationMutation(){
         System.out.print("mutation algorithm (0 = n-point, 1 = invert): ");
         Configuration.instance.mutationAlgorithmChoice = inputReader.nextInt();
 
@@ -72,7 +82,7 @@ public class ApplicationTSP {
                 Configuration.instance.mutationRatio);
 
         int i = 0;
-       // Chromosome bestChromosome = population.getPopulation()[0];
+        Chromosome bestChromosome = population.getPopulation()[0];
 
         while ((i++ <= Configuration.instance.maximumNumberOfGenerations) && (bestChromosome.getFitness() != 0)) {
             LogEngine.instance.write("generation " + i + " : " + bestChromosome.getGene() + " - fitness : " + bestChromosome.getFitness());
