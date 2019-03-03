@@ -1,4 +1,4 @@
-package main.parameterRecommender;
+package parameterRecommender;
 
 import java.util.Scanner;
 

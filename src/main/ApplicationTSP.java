@@ -8,14 +8,13 @@ public class ApplicationTSP {
 
     public static void main(String... args) {
         Program program = new Program(new CommandLine());
-       // ApplicationTSP applicationTSP = new ApplicationTSP();
-      //  applicationTSP.execute();
-
+        // ApplicationTSP applicationTSP = new ApplicationTSP();
+        //  applicationTSP.execute();
 
 
     }
 
-    public  void setupConfiguration(){
+    public void setupConfiguration() {
         setupConfigurationSelection();
         setupConfigurationCrossover();
         setupConfigurationMutation();
@@ -33,22 +32,21 @@ public class ApplicationTSP {
     }
 
 
-                private void setupConfigurationCrossover() {
-                    System.out.print("crossover algorithm (0 = n-slice, 1 = uniform): ");
-                    Configuration.instance.crossoverAlgorithmChoice = inputReader.nextInt();
+    private void setupConfigurationCrossover() {
+        System.out.print("crossover algorithm (0 = n-slice, 1 = uniform): ");
+        Configuration.instance.crossoverAlgorithmChoice = inputReader.nextInt();
 
-                    if (Configuration.instance.crossoverAlgorithmChoice == 0) {
-                        System.out.print("n-value for n-slice (usually 2-4): ");
-                        Configuration.instance.numberOfSlicePoints = inputReader.nextInt();
-                    }
+        if (Configuration.instance.crossoverAlgorithmChoice == 0) {
+            System.out.print("n-value for n-slice (usually 2-4): ");
+            Configuration.instance.numberOfSlicePoints = inputReader.nextInt();
+        }
 
-                    System.out.print("crossover ratio (0.60-0.85): ");
-                    Configuration.instance.crossoverRatio = inputReader.nextDouble();
-            }
+        System.out.print("crossover ratio (0.60-0.85): ");
+        Configuration.instance.crossoverRatio = inputReader.nextDouble();
+    }
 
 
-
-    private void setupConfigurationMutation(){
+    private void setupConfigurationMutation() {
         System.out.print("mutation algorithm (0 = n-point, 1 = invert): ");
         Configuration.instance.mutationAlgorithmChoice = inputReader.nextInt();
 

@@ -17,6 +17,7 @@ public enum Configuration {
 
     public CrossoverType crossoverType = CrossoverType.PMX;
     public MutationType mutationType = MutationType.DM;
+    public SelectionType selectionType = SelectionType.RWS;
     public Object commandLine;
     public int selectionAlgorithmChoice;
     public double tournamentSelectionKValue;

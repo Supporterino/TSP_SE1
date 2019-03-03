@@ -9,14 +9,14 @@ import data.HSQLDBManager;
 import data.InstanceReader;
 import data.TSPLIBReader;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -27,7 +27,6 @@ import javafx.scene.paint.Color;
 import mutation.DisplacementMutation;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import selection.RouletteWheelSelection;
 import selection.TournamentSelection;
 
 import java.io.*;
@@ -35,12 +34,25 @@ import java.util.ArrayList;
 
 public class Gui extends Application {
     private JSONObject config;
-    private double crossoverRatio = 0.5;
-    private double mutationRatio = 0.001;
     private int maxIterations = 1000;
-    private TextArea results;
     private ArrayList<City> availableCities;
     private Configuration configuration;
+
+    private TextArea results;
+    private ComboBox crossOver;
+    private Spinner<Double> crossOverRatio;
+    private ComboBox mutation;
+    private Spinner<Double> mutationRatio;
+    private Spinner<Integer> iterations;
+    private ComboBox selection;
+    private Button start;
+
+
+    private Tour result = new Tour();
+
+    private ObservableList<String> crossovers = FXCollections.observableArrayList("1PX", "2PX", "AX", "HX", "IX", "KPX", "SX", "UNX");
+    private ObservableList<String> mutations = FXCollections.observableArrayList("DM", "EM", "INSM", "INVM", "SM");
+    private ObservableList<String> selections = FXCollections.observableArrayList("PRWS", "RBRWS", "RWS", "TS");
 
     public static void main(String[] args) {
         launch(args);
@@ -62,6 +74,7 @@ public class Gui extends Application {
         startupHSQLDB();
         loadData();
         init(scene);
+        shutdownHSQLDB();
         primaryStage.setResizable(false);
         primaryStage.setTitle("TSP");
         primaryStage.setScene(scene);
@@ -70,43 +83,74 @@ public class Gui extends Application {
 
     public void init(Scene root) {
         configuration = Configuration.instance;
-        AlternatingEdgesCrossover alternatingEdgesCrossover = new AlternatingEdgesCrossover();
-        DisplacementMutation displacementMutation = new DisplacementMutation();
-        TournamentSelection tournamentSelection = new TournamentSelection();
-        Tour base = new Tour();
-        Population pop = new Population();
-        base.setCities(availableCities);
 
-        for (int i = 0; i < maxIterations; i++) {
-            double crossover = configuration.randomGenerator.nextDouble(0.5, 0.8);
-            double mutation = configuration.randomGenerator.nextDouble(0.001, 0.005);
+        //Value initialisation
+        crossOver = (ComboBox) root.lookup("#Crossover");
+        crossOverRatio = (Spinner) root.lookup("#CrossoverRatio");
+        mutation = (ComboBox) root.lookup("#Mutation");
+        mutationRatio = (Spinner) root.lookup("#MutationRatio");
+        iterations = (Spinner) root.lookup("#Iterations");
+        selection = (ComboBox) root.lookup("#Selection");
+        start = (Button) root.lookup("#Start");
+        results = (TextArea) root.lookup("#result");
 
-            if (mutation <= mutationRatio) {
-                displacementMutation.doMutation(base);
-            }
+        initComponents();
+    }
 
-            if (crossover <= crossoverRatio) {
-                Tour mix = new Tour();
-                mix.setCities(base.getCities());
-                pop.setTourList(alternatingEdgesCrossover.doCrossover(base,mix));
-                base.setCities(tournamentSelection.doSelection(pop).get(0).getCities());
-            }
-        }
-
+    public void print() {
         StringBuilder str = new StringBuilder();
 
-        for (int i = 0; i < base.getSize(); i++) {
-            str.append(base.getCity(i));
+        for (int i = 0; i < result.getSize(); i++) {
+            str.append(result.getCity(i).getId());
             str.append(" -> ");
         }
 
-        results = (TextArea) root.lookup("#result");
         results.setText(str.toString());
+    }
+
+
+    public void execute() {
+
+    }
+
+    public void initComponents() {
+        crossOver.setItems(crossovers);
+        mutation.setItems(mutations);
+        selection.setItems(selections);
+
+        crossOver.setValue(configuration.crossoverType);
+        mutation.setValue(configuration.mutationType);
+        selection.setValue(configuration.selectionType);
+
+        SpinnerValueFactory<Double> crossoverFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.5, 0.8, 0.5);
+        SpinnerValueFactory<Double> mutationFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.001, 0.005, 0.001);
+        SpinnerValueFactory<Integer> iterationsFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 10000);
+
+        ((SpinnerValueFactory.DoubleSpinnerValueFactory) crossoverFactory).setAmountToStepBy(0.1);
+        ((SpinnerValueFactory.DoubleSpinnerValueFactory) mutationFactory).setAmountToStepBy(0.001);
+
+        crossOverRatio.setValueFactory(crossoverFactory);
+        mutationRatio.setValueFactory(mutationFactory);
+        iterations.setValueFactory(iterationsFactory);
+
+        results.setWrapText(true);
+
+        start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("You clicked: " + ((Button) event.getSource()).getId());
+                execute();
+            }
+        });
     }
 
     public void startupHSQLDB() {
         HSQLDBManager.instance.startup();
         HSQLDBManager.instance.init();
+    }
+
+    public void shutdownHSQLDB() {
+        HSQLDBManager.instance.shutdown();
     }
 
     public void loadData() {
@@ -149,7 +193,6 @@ public class Gui extends Application {
 
                     JSONObject jsonObject = getJSONfile(db.getFiles().toString());
                     config = jsonObject;
-
                 } catch (IOException e) {
                     System.out.println(e);
                 }
@@ -166,7 +209,7 @@ public class Gui extends Application {
 
     private JSONObject getJSONfile(String fileName) throws IOException {
 
-        String newFileName = fileName.substring(1,fileName.length()-1);
+        String newFileName = fileName.substring(1, fileName.length() - 1);
         BufferedReader br = new BufferedReader(new FileReader(newFileName));
         String s = "";
 
@@ -174,13 +217,12 @@ public class Gui extends Application {
             System.out.println(s);
 
         JSONParser parser = new JSONParser();
-        try
-        {
+        try {
             Object object = parser
                     .parse(new FileReader(newFileName));
 
             //convert Object to JSONObject
-            JSONObject jsonObject = (JSONObject)object;
+            JSONObject jsonObject = (JSONObject) object;
 
             // Reading the JSON file
             String mutation = (String) jsonObject.get("mutation");
@@ -192,8 +234,7 @@ public class Gui extends Application {
             long maximumNumberOfIterations = (long) jsonObject.get("maximumNumberOfIterations");
 
             return jsonObject;
-        } catch(Exception fe)
-        {
+        } catch (Exception fe) {
             fe.printStackTrace();
         }
         return null;

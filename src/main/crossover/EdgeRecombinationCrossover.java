@@ -1,4 +1,4 @@
-package main.crossover;
+package crossover;
 
 import base.City;
 import base.Tour;

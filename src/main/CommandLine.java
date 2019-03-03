@@ -114,28 +114,28 @@ public class CommandLine {
 
             switch(cm) {
                 case "PMX":
-                    config.instance.crossoverType = Crossover.OnePX;
+                    Configuration.instance.crossoverType = Crossover.OnePX;
 
                 case "IRX" :
-                    config.instance.crossoverType = Crossover.TwoPX;
+                    Configuration.instance.crossoverType = Crossover.TwoPX;
 
                 case "AX":
-                    config.instance.crossoverType = Crossover.AX;
+                    Configuration.instance.crossoverType = Crossover.AX;
 
                 case "HX":
-                    config.instance.crossoverType = Crossover.HX;
+                    Configuration.instance.crossoverType = Crossover.HX;
 
                 case "IX":
-                    config.instance.crossoverType = Crossover.IX;
+                    Configuration.instance.crossoverType = Crossover.IX;
 
                 case "KPX":
-                    config.instance.crossoverType = Crossover.KPX;
+                    Configuration.instance.crossoverType = Crossover.KPX;
 
                 case "SX":
-                    config.instance.crossoverType = Crossover.SX;
+                    Configuration.instance.crossoverType = Crossover.SX;
 
                 case "UNX":
-                    config.instance.crossoverType = Crossover.UNX;
+                    Configuration.instance.crossoverType = Crossover.UNX;
             }
 
             switch(mm) {
