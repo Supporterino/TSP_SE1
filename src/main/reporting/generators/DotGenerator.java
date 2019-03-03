@@ -36,7 +36,7 @@ public class DotGenerator extends ChartGenerator {
     @Override
     public JFreeChart generateChart() {
         fillDataset();
-        PlotOrientation orientation = PlotOrientation.HORIZONTAL;
+        PlotOrientation orientation = PlotOrientation.VERTICAL;
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
         return ChartFactory.createScatterPlot(name, "ID", "Population Size", dataset, orientation, true, true, true);
