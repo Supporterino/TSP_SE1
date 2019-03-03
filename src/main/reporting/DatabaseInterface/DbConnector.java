@@ -15,6 +15,7 @@ public class DbConnector implements IDbConnector {
 
     @Override
     public ArrayList<Object> getDbDataset() {
-        return null;//TODO get correct data from db
+        //TODO use manager to retrieve data and repackage in a way that is useful for chart datasets
+        return null;
     }
 }
