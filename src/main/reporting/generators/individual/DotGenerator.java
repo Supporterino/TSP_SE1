@@ -17,6 +17,7 @@ public class DotGenerator extends ChartGenerator {
 
     @Override
     protected void fillDataset() {
+        database.getDbDataset();
         //TODO fill series from db
     }
 

@@ -13,6 +13,7 @@ public class BoxGenerator extends ChartGenerator {
     }
 
     protected void fillDataset() {
+        database.getDbDataset();
         //TODO get data from db
     }
 

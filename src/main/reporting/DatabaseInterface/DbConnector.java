@@ -20,10 +20,12 @@ public class DbConnector implements IDbConnector {
     @Override
     public ArrayList<Object> getDbDataset() {
         List<List<Object>> data = manager.getAllScenarios();
+        System.out.println("datasize" + data.size());
         for (List<Object> subList : data
         ) {
             for (Object element : subList
             ) {
+                System.out.println(element);
                 //TODO do something the the single elements to build datasets
             }
         }

@@ -15,6 +15,7 @@ public class HistGenerator extends ChartGenerator {
 
     @Override
     protected void fillDataset() {
+        database.getDbDataset();
         //TODO fill series from db
     }
 
@@ -27,8 +28,8 @@ public class HistGenerator extends ChartGenerator {
         } catch (IllegalArgumentException e) {
             System.out.println("Series not filled. Chart cannot be created");
             e.printStackTrace();
-            series=new double[1];
-            series[0]=10;
+            series = new double[1];
+            series[0] = 10;
             dataset.addSeries("TODO", series, 10);
         }
         return ChartFactory.createHistogram(name, "TODO", "TODO", dataset, PlotOrientation.VERTICAL, true, true, true);//TODO label fields
