@@ -1,6 +1,6 @@
 package reporting.generators.demos;
 
-import reporting.generators.individual.DotGenerator;
+import reporting.generators.DotGenerator;
 
 public class DotDemo extends DotGenerator {
 

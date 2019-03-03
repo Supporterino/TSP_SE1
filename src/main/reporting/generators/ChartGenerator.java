@@ -1,7 +1,11 @@
 package reporting.generators.individual;
 
-import reporting.DatabaseInterface.DbConnector;
+import data.HSQLManager;
+import data.Scenario;
 import reporting.gui.ChartFrame;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ChartGenerator implements IChartGenerator {
 
@@ -10,11 +14,19 @@ public abstract class ChartGenerator implements IChartGenerator {
     /**
      * connecter used to read data from the db in order to fill the datasets
      */
-    protected DbConnector database;
+    protected HSQLManager database;
 
-    public ChartGenerator(String name,String dbName) {
+    public ChartGenerator(String name, HSQLManager db) {
         this.name = name;
-        database = new DbConnector(dbName);
+        database = db;
+    }
+
+    protected ArrayList<Scenario> genScenarios() {
+        ArrayList<Scenario> scenarios = new ArrayList<>();
+        for (List<Object> s : database.getAllScenarios()) {
+            scenarios.add(new Scenario(s));
+        }
+        return scenarios;
     }
 
     @Override

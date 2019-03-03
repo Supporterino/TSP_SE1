@@ -1,5 +1,6 @@
 package reporting.generators.individual;
 
+import data.HSQLManager;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -10,14 +11,14 @@ public class DotGenerator extends ChartGenerator {
 
     protected XYSeries series;
 
-    public DotGenerator(String dbName) {
-        super("Dot Chart", dbName);
+    public DotGenerator(HSQLManager db) {
+        super("Dot Chart", db);
         series = new XYSeries("Series");
     }
 
     @Override
     protected void fillDataset() {
-        database.getDbDataset();
+        database.getAllScenarios();
         //TODO fill series from db
     }
 

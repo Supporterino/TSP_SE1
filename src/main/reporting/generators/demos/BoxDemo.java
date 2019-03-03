@@ -1,6 +1,6 @@
 package reporting.generators.demos;
 
-import reporting.generators.individual.BoxGenerator;
+import reporting.generators.BoxGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
 package reporting.generators.individual;
 
+import data.HSQLManager;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -9,13 +10,13 @@ public class HistGenerator extends ChartGenerator {
 
     protected double[] series;
 
-    public HistGenerator(String dbName) {
-        super("Hist Chart", dbName);
+    public HistGenerator(HSQLManager db) {
+        super("Hist Chart", db);
     }
 
     @Override
     protected void fillDataset() {
-        database.getDbDataset();
+        database.getAllScenarios();
         //TODO fill series from db
     }
 
