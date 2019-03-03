@@ -4,6 +4,9 @@ import base.City;
 import base.Population;
 import base.Tour;
 import configuration.Configuration;
+import configuration.CrossoverType;
+import configuration.MutationType;
+import configuration.SelectionType;
 import crossover.AlternatingEdgesCrossover;
 import data.HSQLDBManager;
 import data.InstanceReader;
@@ -35,7 +38,6 @@ import java.util.ArrayList;
 public class Gui extends Application {
     private JSONObject config;
     private int maxIterations = 1000;
-    private ArrayList<City> availableCities;
     private Configuration configuration;
 
     private TextArea results;
@@ -48,7 +50,7 @@ public class Gui extends Application {
     private Button start;
 
 
-    private Tour result = new Tour();
+    private Tour result = new Tour(); //Dummy Object because main routine does not exist
 
     private ObservableList<String> crossovers = FXCollections.observableArrayList("1PX", "2PX", "AX", "HX", "IX", "KPX", "SX", "UNX");
     private ObservableList<String> mutations = FXCollections.observableArrayList("DM", "EM", "INSM", "INVM", "SM");
@@ -71,17 +73,14 @@ public class Gui extends Application {
         root.getChildren().add(dragAndDrop);
 
         Scene scene = new Scene(root, 820.0, 484.0);
-        startupHSQLDB();
-        loadData();
         init(scene);
-        shutdownHSQLDB();
         primaryStage.setResizable(false);
         primaryStage.setTitle("TSP");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    public void init(Scene root) {
+    private void init(Scene root) {
         configuration = Configuration.instance;
 
         //Value initialisation
@@ -97,7 +96,7 @@ public class Gui extends Application {
         initComponents();
     }
 
-    public void print() {
+    private void print() {
         StringBuilder str = new StringBuilder();
 
         for (int i = 0; i < result.getSize(); i++) {
@@ -109,11 +108,28 @@ public class Gui extends Application {
     }
 
 
-    public void execute() {
+    private void execute() {
+        configuration.crossoverType = CrossoverType.valueOf(crossOver.getValue().toString());
+        configuration.mutationType = MutationType.valueOf(mutation.getValue().toString());
+        configuration.selectionType = SelectionType.valueOf(selection.getValue().toString());
 
+        configuration.crossoverRatio = crossOverRatio.getValue();
+        configuration.mutationRatio = mutationRatio.getValue();
+        maxIterations = iterations.getValue();
     }
 
-    public void initComponents() {
+    private void fillGUIwithJSON() {
+        crossOver.setValue(config.get("crossover").toString());
+        mutation.setValue(config.get("mutation").toString());
+        selection.setValue(config.get("selection").toString());
+
+        crossOverRatio.getValueFactory().setValue(Double.parseDouble(config.get("crossoverRatio").toString()));
+        mutationRatio.getValueFactory().setValue(Double.parseDouble(config.get("mutationRatio").toString()));
+
+        iterations.getValueFactory().setValue(Integer.parseInt(config.get("maximumNumberOfIterations").toString()));
+    }
+
+    private void initComponents() {
         crossOver.setItems(crossovers);
         mutation.setItems(mutations);
         selection.setItems(selections);
@@ -135,40 +151,16 @@ public class Gui extends Application {
 
         results.setWrapText(true);
 
-        start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("You clicked: " + ((Button) event.getSource()).getId());
-                execute();
-            }
+        start.setOnAction(event -> {
+            System.out.println("You clicked: " + ((Button) event.getSource()).getId());
+            execute();
         });
     }
 
-    public void startupHSQLDB() {
-        HSQLDBManager.instance.startup();
-        HSQLDBManager.instance.init();
-    }
-
-    public void shutdownHSQLDB() {
-        HSQLDBManager.instance.shutdown();
-    }
-
-    public void loadData() {
-        InstanceReader instanceReader = new InstanceReader(Configuration.instance.dataFilePath);
-        instanceReader.open();
-        TSPLIBReader tspLibReader = new TSPLIBReader(instanceReader);
-
-        availableCities = tspLibReader.getCities();
-
-        instanceReader.close();
-
-        System.out.println();
-    }
-
-    public VBox createDragAndDropLabel() {
+    private VBox createDragAndDropLabel() {
         Label temp = new Label("Drag ´n Drop JSON here");
-        temp.setTranslateY(70);
-        temp.setTranslateX(450);
+        temp.setTranslateY(68);
+        temp.setTranslateX(370);
         temp.setTextFill(Color.web("#FFFFFF"));
 
         Label dropped = new Label("");
@@ -193,6 +185,7 @@ public class Gui extends Application {
 
                     JSONObject jsonObject = getJSONfile(db.getFiles().toString());
                     config = jsonObject;
+                    fillGUIwithJSON();
                 } catch (IOException e) {
                     System.out.println(e);
                 }
