@@ -4,6 +4,10 @@ import reporting.generators.individual.HistGenerator;
 
 public class HistDemo extends HistGenerator {
 
+    public HistDemo() {
+        super(null);
+    }
+
     /**
      * fills series with random values between 1 and 100
      */

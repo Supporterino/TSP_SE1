@@ -12,9 +12,9 @@ public abstract class ChartGenerator implements IChartGenerator {
      */
     protected DbConnector database;
 
-    public ChartGenerator(String name) {
+    public ChartGenerator(String name,String dbName) {
         this.name = name;
-        database = new DbConnector();
+        database = new DbConnector(dbName);
     }
 
     @Override

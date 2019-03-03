@@ -4,6 +4,10 @@ import reporting.generators.individual.DotGenerator;
 
 public class DotDemo extends DotGenerator {
 
+    public DotDemo() {
+        super(null);
+    }
+
     /**
      * fills series with x and y values between 0 and 100
      */

@@ -7,6 +7,10 @@ import java.util.List;
 
 public class BoxDemo extends BoxGenerator {
 
+    public BoxDemo() {
+        super(null);
+    }
+
     /**
      * creates a list filled with random values between 10 and 30
      *

@@ -7,8 +7,8 @@ import org.jfree.data.statistics.DefaultBoxAndWhiskerCategoryDataset;
 public class BoxGenerator extends ChartGenerator {
     protected DefaultBoxAndWhiskerCategoryDataset dataset;
 
-    public BoxGenerator() {
-        super("Box Chart");
+    public BoxGenerator(String dbName) {
+        super("Box Chart", dbName);
         this.dataset = new DefaultBoxAndWhiskerCategoryDataset();
     }
 

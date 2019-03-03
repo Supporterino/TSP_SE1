@@ -8,20 +8,25 @@ import reporting.generators.individual.HistGenerator;
 import java.util.ArrayList;
 
 public class Generator implements IGenerator {
+    String dbName;
+
+    public Generator(String dbName) {
+        this.dbName = dbName;
+    }
 
     @Override
     public JFreeChart generateBox() {
-        return new BoxGenerator().generateChart();
+        return new BoxGenerator(dbName).generateChart();
     }
 
     @Override
     public JFreeChart generateDot() {
-        return new DotGenerator().generateChart();
+        return new DotGenerator(dbName).generateChart();
     }
 
     @Override
     public JFreeChart generateHist() {
-        return new HistGenerator().generateChart();
+        return new HistGenerator(dbName).generateChart();
     }
 
     @Override
@@ -35,8 +40,8 @@ public class Generator implements IGenerator {
 
     @Override
     public void showAll() {
-        new BoxGenerator().show();
-        new BoxGenerator().show();
-        new HistGenerator().show();
+        new BoxGenerator(dbName).show();
+        new DotGenerator(dbName).show();
+        new HistGenerator(dbName).show();
     }
 }

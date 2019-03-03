@@ -10,8 +10,8 @@ public class DotGenerator extends ChartGenerator {
 
     protected XYSeries series;
 
-    public DotGenerator() {
-        super("Dot Chart");
+    public DotGenerator(String dbName) {
+        super("Dot Chart", dbName);
         series = new XYSeries("Series");
     }
 

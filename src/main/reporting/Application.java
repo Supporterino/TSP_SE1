@@ -12,6 +12,6 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
-        new Generator().showAll();
+        new Generator("reporting").showAll();//TODO add correct database name
     }
 }

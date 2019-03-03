@@ -9,8 +9,8 @@ public class HistGenerator extends ChartGenerator {
 
     protected double[] series;
 
-    public HistGenerator() {
-        super("Hist Chart");
+    public HistGenerator(String dbName) {
+        super("Hist Chart", dbName);
     }
 
     @Override
@@ -22,7 +22,15 @@ public class HistGenerator extends ChartGenerator {
     public JFreeChart generateChart() {
         fillDataset();
         HistogramDataset dataset = new HistogramDataset();
-        dataset.addSeries("TODO", series, 10);
+        try {
+            dataset.addSeries("TODO", series, 10);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Series not filled. Chart cannot be created");
+            e.printStackTrace();
+            series=new double[1];
+            series[0]=10;
+            dataset.addSeries("TODO", series, 10);
+        }
         return ChartFactory.createHistogram(name, "TODO", "TODO", dataset, PlotOrientation.HORIZONTAL, true, true, true);//TODO label fields
     }
 }
