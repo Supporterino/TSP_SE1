@@ -1,3 +1,4 @@
+import base.Population;
 import configuration.Configuration;
 import mutation.DisplacementMutation;
 import mutation.ExchangeMutation;
@@ -68,4 +69,30 @@ public class ApplicationKnapsack {
         System.out.print("mutation rate (0.005-0.01): ");
         Configuration.instance.mutationRatio = inputReader.nextDouble();
     }
+
+    public void execute() {
+        LogEngine.instance.init();
+
+        long runtimeStart = System.currentTimeMillis();
+
+        Population population = new Population(
+                Configuration.instance.populationSize,
+                Configuration.instance.crossoverRatio,
+                Configuration.instance.elitismRatio,
+                Configuration.instance.mutationRatio);
+
+        int i = 0;
+        Chromosome bestChromosome = population.getPopulation()[0];
+
+        while ((i++ <= Configuration.instance.maximumNumberOfGenerations) && (bestChromosome.getFitness() != 0)) {
+            LogEngine.instance.write("generation " + i + " : " + bestChromosome.getGene() + " - fitness : " + bestChromosome.getFitness());
+            population.evolve();
+            bestChromosome = population.getPopulation()[0];
+        }
+
+        LogEngine.instance.write("generation " + i + " : " + bestChromosome.getGene());
+        LogEngine.instance.write("runtime : " + (System.currentTimeMillis() - runtimeStart) + " ms");
+
+        LogEngine.instance.close();
     }
+}
