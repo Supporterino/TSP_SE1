@@ -20,7 +20,7 @@ public class HistDemo extends HistGenerator {
         ArrayList<Double> list;
         for (int i = 0; i < 10; i++) {
             list = new ArrayList<>();
-            for (int j = 0; j < ((int) (Math.random() * 10));j++){
+            for (int j = 0; j < ((int) ((Math.random() * 10) + 2)); j++) {
                 list.add(Math.random() * 500);
             }
             series.put((long) i, list);

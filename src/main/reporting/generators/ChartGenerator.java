@@ -1,4 +1,4 @@
-package reporting.generators.individual;
+package reporting.generators;
 
 import data.HSQLManager;
 import data.Scenario;

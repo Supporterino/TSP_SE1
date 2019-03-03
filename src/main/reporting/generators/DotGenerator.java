@@ -1,12 +1,18 @@
-package reporting.generators.individual;
+package reporting.generators;
 
 import data.HSQLManager;
+import data.Scenario;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import java.util.ArrayList;
+
+/**
+ * Maps population size for each id
+ */
 public class DotGenerator extends ChartGenerator {
 
     protected XYSeries series;
@@ -18,8 +24,13 @@ public class DotGenerator extends ChartGenerator {
 
     @Override
     protected void fillDataset() {
-        database.getAllScenarios();
-        //TODO fill series from db
+
+        ArrayList<Scenario> scenarios = genScenarios();
+        for (Scenario s : scenarios
+        ) {
+            series.add(s.getId(), s.getPopulation_size());
+        }
+
     }
 
     @Override
@@ -28,7 +39,7 @@ public class DotGenerator extends ChartGenerator {
         PlotOrientation orientation = PlotOrientation.HORIZONTAL;
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
-        return ChartFactory.createScatterPlot(name, "TODO", "TODO", dataset, orientation, true, true, true);//TODO label fields
+        return ChartFactory.createScatterPlot(name, "ID", "Population Size", dataset, orientation, true, true, true);
     }
 
 }

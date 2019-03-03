@@ -23,6 +23,6 @@ public class Application {
         System.out.println("scenario size " + db.getAllScenarios().size());
 
 
-        new Generator(db).showAll();//TODO add correct database name
+        new Generator(db).showAll();
     }
 }

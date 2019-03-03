@@ -1,14 +1,22 @@
-package reporting.generators.individual;
+package reporting.generators;
 
 import data.HSQLManager;
+import data.Scenario;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.statistics.HistogramDataset;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * plots crossover ratio for each id
+ */
 public class HistGenerator extends ChartGenerator {
 
-    protected double[] series;
+    protected HashMap<Long, ArrayList<Double>> series;
 
     public HistGenerator(HSQLManager db) {
         super("Hist Chart", db);
@@ -16,8 +24,19 @@ public class HistGenerator extends ChartGenerator {
 
     @Override
     protected void fillDataset() {
-        database.getAllScenarios();
-        //TODO fill series from db
+        ArrayList<Scenario> scenarios = genScenarios();
+        series = new HashMap<>();
+        ArrayList<Double> current;
+        for (Scenario s : scenarios
+        ) {
+            current = series.get(s.getId());
+            if (current == null) {
+                current = new ArrayList<>();
+                series.put(s.getId(), current);
+            }
+            current.add(s.getCrossover_ratio());
+
+        }
     }
 
     @Override
@@ -25,14 +44,25 @@ public class HistGenerator extends ChartGenerator {
         fillDataset();
         HistogramDataset dataset = new HistogramDataset();
         try {
-            dataset.addSeries("TODO", series, 10);
+            double[] currentSet;
+            ArrayList<Double> currentList;
+            for (Map.Entry<Long, ArrayList<Double>> e : series.entrySet()
+            ) {
+                currentList = e.getValue();
+                currentSet = new double[currentList.size()];
+                for (int i = 0; i < currentList.size(); i++) {
+                    currentSet[i] = currentList.get(i);
+                }
+
+                dataset.addSeries(e.getKey(), currentSet, 10);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("Series not filled. Chart cannot be created");
             e.printStackTrace();
-            series = new double[1];
-            series[0] = 10;
-            dataset.addSeries("TODO", series, 10);
+            double[] backup = new double[1];
+            backup[0] = 10;
+            dataset.addSeries("BACKUP VALUE TO KEEP AWAY FROM CRASHING", backup, 10);
         }
-        return ChartFactory.createHistogram(name, "TODO", "TODO", dataset, PlotOrientation.VERTICAL, true, true, true);//TODO label fields
+        return ChartFactory.createHistogram(name, "ID", "Crossover Ratio", dataset, PlotOrientation.VERTICAL, true, true, true);//TODO label fields
     }
 }

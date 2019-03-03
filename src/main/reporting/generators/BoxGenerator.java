@@ -1,4 +1,4 @@
-package reporting.generators.individual;
+package reporting.generators;
 
 import data.HSQLManager;
 import data.Scenario;
@@ -29,9 +29,9 @@ public class BoxGenerator extends ChartGenerator {
         for (Scenario s : scenarios
         ) {
             population.add((double) s.getPopulation_size());
-            mutation.add((double) s.getMutation_ratio());
-            crossover.add((double) s.getCrossover_ratio());
-            mutationRatio.add((double) s.getMutation_ratio());
+            mutation.add(s.getMutation_ratio());
+            crossover.add(s.getCrossover_ratio());
+            mutationRatio.add(s.getMutation_ratio());
         }
 
         dataset.add(population, "Population size", "");
