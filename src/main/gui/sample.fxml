@@ -18,13 +18,13 @@
         </Label>
         <Label layoutX="124.0" layoutY="6.0" text="Crossover" />
         <Label layoutX="278.0" layoutY="6.0" text="Mutation" />
-        <ComboBox fx:id="Crossover" layoutX="131.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" />
+        <ComboBox fx:id="Crossover" layoutX="120.0" layoutY="28.0" prefHeight="27.0" prefWidth="73.0" />
         <Spinner fx:id="CrossoverRatio" layoutX="195.0" layoutY="28.0" prefHeight="27.0" prefWidth="63.0" />
         <ComboBox fx:id="Mutation" layoutX="278.0" layoutY="28.0" prefHeight="27.0" prefWidth="73.0" />
         <Spinner fx:id="MutationRatio" layoutX="361.0" layoutY="28.0" prefHeight="27.0" prefWidth="79.0" />
         <Spinner fx:id="Iterations" layoutX="550.0" layoutY="28.0" prefHeight="27.0" prefWidth="79.0" />
         <Label layoutX="453.0" layoutY="6.0" text="Selection" />
-        <ComboBox fx:id="Selection" layoutX="453.0" layoutY="28.0" prefHeight="27.0" prefWidth="57.0" />
+        <ComboBox fx:id="Selection" layoutX="453.0" layoutY="28.0" prefHeight="27.0" prefWidth="80.0" />
         <Label layoutX="550.0" layoutY="6.0" prefHeight="17.0" prefWidth="73.0" text="Iterations" />
         <Button fx:id="Start" layoutX="648.0" layoutY="28.0" mnemonicParsing="false" text="Start" />
         <Button fx:id="Stop" layoutX="707.0" layoutY="28.0" mnemonicParsing="false" text="Step" />

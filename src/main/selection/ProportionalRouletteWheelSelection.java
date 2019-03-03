@@ -1,7 +1,7 @@
-package main.selection;
+package selection;
 
-import main.base.Population;
-import main.base.Tour;
+import base.Population;
+import base.Tour;
 
 import java.util.*;
 

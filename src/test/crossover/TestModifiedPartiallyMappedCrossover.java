@@ -2,12 +2,12 @@ package crossover;
 
 import base.Tour;
 import crossover.ModifiedPartiallyMappedCrossover;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestModifiedPartiallyMappedCrossover {
     @Test

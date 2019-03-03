@@ -85,7 +85,7 @@ public class ModifiedOrderCrossover extends Crossover {
             double y1 = tour.getCity(i).getY();
             double x2 = tour.getCity(i + 1).getX();
             double y2 = tour.getCity(i + 1).getY();
-            distance = tour.euclideanDistance(x1, y1, x2, y2);
+            distance = Tour.euclideanDistance(x1, y1, x2, y2);
             if(i == 0)
             {
                 shortestDistance = distance;
