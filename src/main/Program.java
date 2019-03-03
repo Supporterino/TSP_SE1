@@ -30,6 +30,9 @@ public class Program {
     public Program() {
     }
 
+    public Program(CommandLine commandLine) {
+    }
+
     public void startupHSQLDB() {
         HSQLDBManager.instance.startup();
         HSQLDBManager.instance.init();
