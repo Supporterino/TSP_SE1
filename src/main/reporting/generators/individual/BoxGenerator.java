@@ -19,7 +19,7 @@ public class BoxGenerator extends ChartGenerator {
     @Override
     public JFreeChart generateChart() {
         fillDataset();
-        return ChartFactory.createBoxAndWhiskerChart(name, "TODO", "TODO", dataset, true);//TODO label fields
+        return ChartFactory.createBoxAndWhiskerChart(name, "Category", "Value", dataset, true);
     }
 
 

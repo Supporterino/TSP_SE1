@@ -31,6 +31,6 @@ public class HistGenerator extends ChartGenerator {
             series[0]=10;
             dataset.addSeries("TODO", series, 10);
         }
-        return ChartFactory.createHistogram(name, "TODO", "TODO", dataset, PlotOrientation.HORIZONTAL, true, true, true);//TODO label fields
+        return ChartFactory.createHistogram(name, "TODO", "TODO", dataset, PlotOrientation.VERTICAL, true, true, true);//TODO label fields
     }
 }
