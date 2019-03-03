@@ -27,7 +27,7 @@
         <ComboBox fx:id="Selection" layoutX="453.0" layoutY="28.0" prefHeight="27.0" prefWidth="80.0" />
         <Label layoutX="550.0" layoutY="6.0" prefHeight="17.0" prefWidth="73.0" text="Iterations" />
         <Button fx:id="Start" layoutX="648.0" layoutY="28.0" mnemonicParsing="false" text="Start" />
-        <Button fx:id="Stop" layoutX="707.0" layoutY="28.0" mnemonicParsing="false" text="Step" />
+        <Button fx:id="Step" layoutX="707.0" layoutY="28.0" mnemonicParsing="false" text="Step" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d7" height="27.0" layoutX="8.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="781.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838282" height="27.0" layoutX="359.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
         <Label id="Infos" fx:id="Infos" layoutX="14.0" layoutY="74.0" text="Iteration: 0 | Best distance: 0 | #C: 0 | #M: 0" />

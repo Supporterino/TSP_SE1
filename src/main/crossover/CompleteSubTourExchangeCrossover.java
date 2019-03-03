@@ -24,23 +24,25 @@ public class CompleteSubTourExchangeCrossover extends crossover.Crossover {
 
         for (int i = 0; i <= parent1.length; i++) {
             if (parent1[i].getId() + 1 == parent1[i + 1].getId()) {
-                int j=i;
+                int j = i;
 
                 List<base.City> folge = new ArrayList<>();
-                int laenge =0;
-                while (parent1[j].getId() + 1 == parent1[j + 1].getId()){
-                    row ++;
-                j++;}
+                int laenge = 0;
+                while (parent1[j].getId() + 1 == parent1[j + 1].getId()) {
+                    row++;
+                    j++;
+                }
                 j = i;
 
-                while (parent1[j].getId() + 1 == parent1[j + 1].getId()){
+                while (parent1[j].getId() + 1 == parent1[j + 1].getId()) {
                     folge.add(parent1[j]);
-                j = j + 1;}
+                    j = j + 1;
+                }
                 folge.add(parent1[j]);
-                for (int k = 0; k <= parent2.length; k++){
-                    if (parent2[k].getId() == folge.get(0).getId() && parent2[k+1].getId() == folge.get(1).getId()){
+                for (int k = 0; k <= parent2.length; k++) {
+                    if (parent2[k].getId() == folge.get(0).getId() && parent2[k + 1].getId() == folge.get(1).getId()) {
                         int l = 0;
-                        while (parent2[k] == folge.get(l) && parent2[k+1] == folge.get(l+1)){
+                        while (parent2[k] == folge.get(l) && parent2[k + 1] == folge.get(l + 1)) {
                             folgen.add(folge.get(l));
                             l++;
                             k++;
@@ -50,10 +52,9 @@ public class CompleteSubTourExchangeCrossover extends crossover.Crossover {
                         folgen.add(folge.get(l));
                         numberOfRows = numberOfRows + 1;
                         laengeFolgen.add(laenge);
-                    }
-                    else if ((parent2[k].getId() == folge.get(row).getId()) && (parent2[k+1].getId() == folge.get(row-1).getId())){
-                       int l = row;
-                        while (l > 0 &&parent2[k] == folge.get(l) && parent2[k+1] == folge.get(l+1)){
+                    } else if ((parent2[k].getId() == folge.get(row).getId()) && (parent2[k + 1].getId() == folge.get(row - 1).getId())) {
+                        int l = row;
+                        while (l > 0 && parent2[k] == folge.get(l) && parent2[k + 1] == folge.get(l + 1)) {
                             folgen.add(folge.get(l));
                             l--;
                             k++;
@@ -65,18 +66,12 @@ public class CompleteSubTourExchangeCrossover extends crossover.Crossover {
                         laengeFolgen.add(laenge);
                     }
                 }
-
-
             }
-
-
-            i = i +row;
+            i = i + row;
         }
-
         int g;
-
         for (int i = 0; i <= parent1.length; i++) {
-            for (g =0 ; g< numberOfRows;g++  ) {
+            for (g = 0; g < numberOfRows; g++) {
                 List<base.City> temp = new ArrayList<>();
                 int h;
                 for (h = 0; h < laengeFolgen.get(g); h++) temp.add(folgen.get(h));

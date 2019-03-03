@@ -25,7 +25,8 @@ public enum Configuration {
     public int numberOfSlicePoints;
     public double crossoverRatio;
     public double mutationRatio;
-  
+    public int maxIterations;
+
 
     public double selectionPressureProbability = 0.7;
     public double selectionPressureRatio = 0.1;

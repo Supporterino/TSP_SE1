@@ -37,7 +37,6 @@ import java.util.ArrayList;
 
 public class Gui extends Application {
     private JSONObject config;
-    private int maxIterations = 1000;
     private Configuration configuration;
 
     private TextArea results;
@@ -48,6 +47,7 @@ public class Gui extends Application {
     private Spinner<Integer> iterations;
     private ComboBox selection;
     private Button start;
+    private Button step;
 
 
     private Tour result = new Tour(); //Dummy Object because main routine does not exist
@@ -91,6 +91,7 @@ public class Gui extends Application {
         iterations = (Spinner) root.lookup("#Iterations");
         selection = (ComboBox) root.lookup("#Selection");
         start = (Button) root.lookup("#Start");
+        step = (Button) root.lookup("#Step");
         results = (TextArea) root.lookup("#result");
 
         initComponents();
@@ -115,7 +116,7 @@ public class Gui extends Application {
 
         configuration.crossoverRatio = crossOverRatio.getValue();
         configuration.mutationRatio = mutationRatio.getValue();
-        maxIterations = iterations.getValue();
+        configuration.maxIterations = iterations.getValue();
 
         //RUN main routine by CommandLine Team
     }
@@ -157,6 +158,10 @@ public class Gui extends Application {
             System.out.println("You clicked: " + ((Button) event.getSource()).getId());
             execute();
         });
+
+        step.setOnAction(event -> {
+            System.out.println("You clicked: " + ((Button) event.getSource()).getId());
+        });
     }
 
     private VBox createDragAndDropLabel() {
@@ -166,6 +171,7 @@ public class Gui extends Application {
         temp.setTextFill(Color.web("#FFFFFF"));
 
         Label dropped = new Label("");
+
 
         VBox dragTarget = new VBox();
         dragTarget.getChildren().addAll(temp, dropped);

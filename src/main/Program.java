@@ -7,6 +7,7 @@ import data.InstanceReader;
 import data.TSPLIBReader;
 import mutation.Mutation;
 import selection.Selection;
+import utilities.LogEngine;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
