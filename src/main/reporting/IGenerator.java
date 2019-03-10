@@ -1,4 +1,4 @@
-package reporting.generators;
+package reporting;
 
 import org.jfree.chart.JFreeChart;
 

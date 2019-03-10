@@ -1,4 +1,4 @@
-package reporting;
+package reporting.test_applications;
 
 import reporting.generators.demos.BoxDemo;
 import reporting.generators.demos.DotDemo;
