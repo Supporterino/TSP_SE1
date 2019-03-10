@@ -1,0 +1,3 @@
+[submodule "src/main/data/HSQLManagerForEvolution"]
+	path = src/main/data/HSQLManagerForEvolution
+	url = https://github.com/herterjo/HSQLManagerForEvolution

@@ -1,8 +1,8 @@
 package statistics;
 
-import data.EvaluationFactory;
-import data.HSQLManager;
-import data.IEvaluation;
+import data.HSQLManagerForEvolution.EvaluationFactory;
+import data.HSQLManagerForEvolution.HSQLManager;
+import data.HSQLManagerForEvolution.IEvaluation;
 
 import java.util.ArrayList;
 import java.util.List;

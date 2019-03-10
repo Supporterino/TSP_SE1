@@ -1,8 +1,8 @@
 package reporting.test_applications;
 
-import data.HSQLManager;
-import data.IScenario;
-import data.Scenario;
+import data.HSQLManagerForEvolution.HSQLManager;
+import data.HSQLManagerForEvolution.IScenario;
+import data.HSQLManagerForEvolution.Scenario;
 import reporting.Generator;
 
 /**

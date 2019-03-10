@@ -1,7 +1,7 @@
 package reporting.generators;
 
-import data.HSQLManager;
-import data.Scenario;
+import data.HSQLManagerForEvolution.HSQLManager;
+import data.HSQLManagerForEvolution.Scenario;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;

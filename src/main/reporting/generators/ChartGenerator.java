@@ -1,7 +1,7 @@
 package reporting.generators;
 
-import data.HSQLManager;
-import data.Scenario;
+import data.HSQLManagerForEvolution.HSQLManager;
+import data.HSQLManagerForEvolution.Scenario;
 import reporting.gui.ChartFrame;
 
 import java.util.ArrayList;

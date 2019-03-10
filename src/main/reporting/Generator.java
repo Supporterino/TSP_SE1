@@ -1,6 +1,6 @@
 package reporting;
 
-import data.HSQLManager;
+import data.HSQLManagerForEvolution.HSQLManager;
 import org.jfree.chart.JFreeChart;
 import reporting.generators.BoxGenerator;
 import reporting.generators.DotGenerator;
