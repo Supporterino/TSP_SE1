@@ -1,5 +1,5 @@
 package configuration;
 
 public enum SelectionType {
-    PRWS, RBRWS, RWS, TS,
+    PRWS, RBRWS, RWS, TS
 }

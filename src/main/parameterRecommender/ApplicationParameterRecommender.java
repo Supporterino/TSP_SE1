@@ -66,7 +66,7 @@ public class ApplicationParameterRecommender {
         private String MutationRatio;
         private String Selection;
         private double fitness = 0;
-        private main.Application application = new Application();
+        //private Application application = new Application();
 
         public double getFitness() {
             return fitness;
@@ -84,8 +84,8 @@ public class ApplicationParameterRecommender {
         }
 
         public void run() {
-            application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection, Configuration.instance.maxIterations);
-            fitness = application.getFitness();
+            //application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection, Configuration.instance.maxIterations);
+            //fitness = application.getFitness();
             if(fitness > Configuration.instance.bestFitnessService.fitness){
                 Configuration.instance.bestFitnessService = this;
             }
