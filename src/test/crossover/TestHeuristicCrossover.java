@@ -1,13 +1,13 @@
 package crossover;
 
 import base.Tour;
-import crossover.HeuristicCrossover;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 import static org.junit.Assert.assertTrue;
+
 
 public class TestHeuristicCrossover {
     @Test
