@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Population {
     private ArrayList<Tour> tourList;
 
-    public Population(Object populationSize, double crossoverRatio, Object elitismRatio, double mutationRatio) {
+    public Population() {
     }
 
     public ArrayList<Tour> getTourList() {
