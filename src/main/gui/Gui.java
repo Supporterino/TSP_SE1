@@ -52,8 +52,8 @@ public class Gui extends Application {
 
     private Tour result = new Tour(); //Dummy Object because main routine does not exist
 
-    private ObservableList<String> crossovers = FXCollections.observableArrayList("1PX", "2PX", "AX", "HX", "IX", "KPX", "SX", "UNX");
-    private ObservableList<String> mutations = FXCollections.observableArrayList("DM", "EM", "INSM", "INVM", "SM");
+    private ObservableList<String> crossovers = FXCollections.observableArrayList("AEX", "CSEX", "CX", "DPX", "ERX", "GSX", "HGX", "HX", "MOX", "MPMX", "MPX", "MX", "NWOX", "OBX", "OX", "PMX", "PX", "SCX", "SMX", "UPMX", "VRX");
+    private ObservableList<String> mutations = FXCollections.observableArrayList("DM", "EM", "HM", "INSM", "INVM");
     private ObservableList<String> selections = FXCollections.observableArrayList("PRWS", "RBRWS", "RWS", "TS");
 
     public static void main(String[] args) {
