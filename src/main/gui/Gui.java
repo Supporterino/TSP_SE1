@@ -1,16 +1,10 @@
 package gui;
 
-import base.City;
-import base.Population;
 import base.Tour;
 import configuration.Configuration;
 import configuration.CrossoverType;
 import configuration.MutationType;
 import configuration.SelectionType;
-import crossover.AlternatingEdgesCrossover;
-import data.HSQLDBManager;
-import data.InstanceReader;
-import data.TSPLIBReader;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,13 +21,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-import mutation.DisplacementMutation;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import selection.TournamentSelection;
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class Gui extends Application {
     private JSONObject config;

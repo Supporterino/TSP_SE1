@@ -1,13 +1,11 @@
 import base.City;
-import base.Population;
 import configuration.Configuration;
 import crossover.Crossover;
-import data.HSQLDBManager;
+import data.HSQLManagerForEvolution.HSQLManager;
 import data.InstanceReader;
 import data.TSPLIBReader;
 import mutation.Mutation;
 import selection.Selection;
-import utilities.LogEngine;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -41,12 +39,16 @@ public class Program {
     }
 
     public void startupHSQLDB() {
-        HSQLDBManager.instance.startup();
-        HSQLDBManager.instance.init();
+        HSQLManager.tsp.startup();
+    }
+
+    //Drops all tables
+    public void initHSQLDB(){
+        HSQLManager.tsp.init();
     }
 
     public void shutdownHSQLDB() {
-        HSQLDBManager.instance.shutdown();
+        HSQLManager.tsp.close();
     }
 
     public void printMatrix(double[][] matrix) {
