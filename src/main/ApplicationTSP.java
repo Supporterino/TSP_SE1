@@ -1,3 +1,5 @@
+
+
 import base.Population;
 import configuration.Configuration;
 import utilities.LogEngine;
@@ -7,13 +9,7 @@ public class ApplicationTSP {
     private static ApplicationTSP applicationTSP;
     private Scanner inputReader;
 
-    public static void main(String... args) {
-        Program program = new Program(new CommandLine());
-        // ApplicationTSP applicationTSP = new ApplicationTSP();
-        //  applicationTSP.execute();
 
-
-    }
 
     public void setupConfiguration() {
         setupConfigurationSelection();

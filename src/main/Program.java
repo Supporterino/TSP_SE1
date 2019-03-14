@@ -1,3 +1,5 @@
+
+
 import base.City;
 import configuration.Configuration;
 import crossover.Crossover;
@@ -28,14 +30,13 @@ public class Program {
     }*/
 
     public static void main(String... args) {
-        ApplicationTSP applicationTSP = new ApplicationTSP();
-        ApplicationKnapsack applicationKnapsack = new ApplicationKnapsack();
+        Program program = new Program();
+
     }
 
     public Program() {
-    }
 
-    public Program(CommandLine commandLine) {
+        ApplicationTSP applicationTSP = new ApplicationTSP();
     }
 
     public void startupHSQLDB() {
