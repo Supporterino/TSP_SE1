@@ -158,7 +158,21 @@ public class GeneticAlgorithm {
             geneticAlgorithm.getConfigurationByUserInput();
         }
 
-        geneticAlgorithm.execute();
+        geneticAlgorithm.doSelection();
+        geneticAlgorithm.doMutation();
+        geneticAlgorithm.doCrossover();
+    }
+
+    public void doSelection(){
+
+    }
+
+    public void doMutation(){
+
+    }
+
+    public void doCrossover(){
+
     }
 
     public void getConfigurationByUserInput() {
@@ -270,6 +284,7 @@ public class GeneticAlgorithm {
 
     }
 
+    /*
     public void execute() {
         try {
             // load data: capacity
@@ -446,5 +461,5 @@ public class GeneticAlgorithm {
                 return result;
         } else
             return value;
-    }
+    }*/
 }
