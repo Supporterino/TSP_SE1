@@ -24,7 +24,7 @@ public class ApplicationTSP {
 
         if (Configuration.instance.selectionAlgorithmChoice == 1) {
             System.out.print("k-value for tournament selection (.60-.85): ");
-            Configuration.instance.tournamentSelectionKValue = inputReader.nextDouble();
+           // Configuration.instance.tournamentSelectionKValue = inputReader.nextDouble();
         }
     }
 

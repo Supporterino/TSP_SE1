@@ -22,7 +22,7 @@ public enum Configuration {
 
 
     // base
-    public int maximumKnapsackCapacity = 0;
+    public int maximumTSPCapacity = 0;
     public int numberOfItems = 0;
     public ArrayList<Integer> weightList = new ArrayList<>();
     public ArrayList<Integer> valueList = new ArrayList<>();
@@ -34,7 +34,7 @@ public enum Configuration {
 
     //Selection
     public Selection selection;
-    public double tournamentKValue;
+
 
     // crossover
     public Crossover crossover;

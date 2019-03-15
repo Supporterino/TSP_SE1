@@ -111,7 +111,7 @@ public class CommandLine {
                 }
             }
             else System.err.println("Error: n not found! Please use correkt expression: n[#]cr<#>mm[#]mr<#>s[#]n<#>");
-
+            /*
             switch(cm) {
                 case "PMX":
                     Configuration.instance.crossoverType = Crossover.OnePX;
@@ -144,7 +144,7 @@ public class CommandLine {
 
                 case"EM":
                      mutation = Mutation.EM;
-            }
+            }*/
 
         }
     }

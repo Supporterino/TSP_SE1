@@ -197,15 +197,15 @@ public class GeneticAlgorithm {
         } else if (selectionAlgorithm == 1) {
             Configuration.instance.selection = new TournamentSelection();
             System.out.print("k-value for tournament selection (): ");
-            Configuration.instance.tournamentKValue = inputReader.nextDouble();
+
         } else if (selectionAlgorithm == 2) {
             Configuration.instance.selection = new RankBasedRouletteWheelSelection();
             System.out.print("k-value for tournament selection (): ");
-            Configuration.instance.tournamentKValue = inputReader.nextDouble();
+
         } else if (selectionAlgorithm == 3) {
             Configuration.instance.selection = new ProportionalRouletteWheelSelection();
             System.out.print("k-value for tournament selection (): ");
-            Configuration.instance.tournamentKValue = inputReader.nextDouble();
+
         }
 
         // crossover
